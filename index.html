@@ -1,0 +1,259 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>萌芽教育 · 中文小游戏</title>
+
+<!-- ==========================================================
+     游戏入口页 · 萌芽教育
+     ==========================================================
+     所有游戏共用这一条链接，以后加游戏**不用重新发链接给家长**。
+     要加游戏，只改下面那一段「全部游戏」。
+     ========================================================== -->
+<script>
+/* ============================================================
+   游戏清单 —— Molly 改这里
+   ------------------------------------------------------------
+   加一个游戏 = 复制一整段 { ... }，改成新游戏的信息。
+
+   每段四样东西：
+   · 名字     —— 显示在按钮上
+   · 说明     —— 按钮下面那行小字，一句话讲清怎么玩
+   · 图标     —— 一个 emoji，孩子靠它认游戏（比读字快）
+   · 文件     —— 游戏的文件名，必须和实际文件一模一样
+   · 本周推荐 —— 写 true 就会加个 👑，告诉孩子这周该玩哪个。
+                 不推荐任何一个就全写 false
+
+   ⚠️ 只有一个游戏时，这一页会自动跳过去，孩子不会看到多余的一步。
+      等你加了第二个游戏，它才开始起作用。
+   ============================================================ */
+const 全部游戏 = [
+
+  {
+    名字: "汉字消消乐",
+    说明: "汉字配拼音、两个字连成词",
+    图标: "🔤",
+    文件: "hanzi.html",
+    本周推荐: true,
+  },
+
+  /* ========== 以后加游戏，把下面的注释符号删掉 ==========
+
+  {
+    名字: "",
+    说明: "",
+    图标: "🧩",
+    文件: "",
+    本周推荐: false,
+  },
+
+     ========== 模板结束 ========== */
+
+];
+</script>
+
+<style>
+/* 视觉跟游戏保持一套，孩子不会觉得是两个东西 */
+:root {
+  --bg:       #FFFDF7;
+  --bg-soft:  #F4EFE4;
+  --primary:  #2F5D50;
+  --accent:   #E8734A;
+  --accent-2: #F2B233;
+  --text:     #26221E;
+  --text-2:   #5C554D;
+  --border:   #DED5C4;
+  --font-body: "Nunito", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+  margin: 0; padding: 0; min-height: 100%;
+  background: var(--bg); color: var(--text);
+  font-family: var(--font-body);
+  -webkit-user-select: none; user-select: none;
+  touch-action: manipulation;
+}
+
+.app {
+  max-width: 560px; margin: 0 auto; min-height: 100dvh;
+  padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
+  display: flex; flex-direction: column;
+}
+
+.page { display: none; flex: 1; flex-direction: column; }
+.page.active { display: flex; }
+.spacer { flex: 1; }
+
+.title {
+  font-size: clamp(24px, 7vw, 32px); font-weight: 800;
+  color: var(--primary); text-align: center; margin: 0; line-height: 1.3;
+}
+.hello {
+  text-align: center; margin: 0;
+  font-size: clamp(26px, 8vw, 34px); font-weight: 800;
+}
+.hello .name { color: var(--accent); }
+.brand {
+  text-align: center; font-size: 13px; color: var(--text-2);
+  opacity: .65; padding-top: 16px; letter-spacing: .05em;
+}
+
+.list { display: flex; flex-direction: column; gap: 14px; margin-top: 26px; }
+
+/* 选人按钮 */
+.who-btn {
+  border: 4px solid var(--border); border-radius: 20px; background: #fff;
+  padding: 22px; font-family: var(--font-body); font-size: 24px; font-weight: 800;
+  color: var(--text); cursor: pointer; box-shadow: 0 5px 0 var(--border);
+  display: flex; align-items: center; gap: 16px; justify-content: center;
+}
+.who-btn:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--border); }
+.who-btn .dot { width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0; }
+
+/* 游戏按钮 */
+.game-btn {
+  position: relative;
+  border: 4px solid var(--border); border-radius: 22px; background: #fff;
+  padding: 20px; cursor: pointer; text-align: left;
+  box-shadow: 0 5px 0 var(--border);
+  display: flex; align-items: center; gap: 16px;
+  font-family: var(--font-body);
+}
+.game-btn:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--border); }
+.game-btn .emoji { font-size: 40px; line-height: 1; flex-shrink: 0; }
+.game-btn .t { font-size: 20px; font-weight: 800; color: var(--text); }
+.game-btn .d { font-size: 14px; color: var(--text-2); margin-top: 4px; line-height: 1.4; }
+
+/* 本周推荐：描边加重 + 右上角皇冠 */
+.game-btn.pick { border-color: var(--accent-2); box-shadow: 0 5px 0 var(--accent-2); }
+.game-btn .crown {
+  position: absolute; top: -14px; right: 14px;
+  background: var(--accent-2); color: #fff;
+  font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 999px;
+  white-space: nowrap;
+}
+</style>
+
+<div class="app">
+
+  <!-- 选人页：一家有好几个孩子时才出现 -->
+  <section class="page" id="page-who">
+    <div class="spacer"></div>
+    <h1 class="title">今天是谁在玩？</h1>
+    <div class="list" id="who-list"></div>
+    <div class="spacer"></div>
+  </section>
+
+  <!-- 游戏列表页 -->
+  <section class="page" id="page-games">
+    <div class="spacer"></div>
+    <p class="hello">你好，<span class="name" id="hello-name"></span>！</p>
+    <div class="list" id="game-list"></div>
+    <div class="spacer"></div>
+    <p class="brand">萌芽教育</p>
+  </section>
+
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+
+/* ------------------------------------------------------------
+   身份从网址里读，跟游戏里是同一套规则：
+   ?kids=amy 一个孩子，?kids=amy,leo 一家两个。
+   ------------------------------------------------------------ */
+const 参数 = new URLSearchParams(location.search);
+const 名单 = (参数.get('kids') || 参数.get('s') || '小朋友')
+  .split(',').map(s => s.trim()).filter(Boolean);
+
+const 颜色表 = ['#E8734A', '#2F5D50', '#F2B233', '#3E8E5A', '#7B5EA7', '#C4462F'];
+
+/* 跳进某个游戏。
+   关键：把网址后面的参数**原样带过去**，游戏才知道是谁在玩、玩第几课。
+   选过人之后只传选中的那一个，游戏里就不用再选一次。 */
+function 进游戏(文件, 学生代号) {
+  const 带过去 = new URLSearchParams(location.search);
+  带过去.set('kids', 学生代号);
+  location.href = 文件 + '?' + 带过去.toString();
+}
+
+/* 只有一个游戏时，这一页没有存在意义，直接跳过去。
+   用 replace 而不是普通跳转，这样孩子按「返回」不会又被弹回这一页、陷入循环。
+   等你加了第二个游戏，下面这段自动失效，列表就出来了。 */
+function 也许直接跳(学生代号) {
+  if (全部游戏.length === 1) {
+    const 带过去 = new URLSearchParams(location.search);
+    带过去.set('kids', 学生代号);
+    location.replace(全部游戏[0].文件 + '?' + 带过去.toString());
+    return true;
+  }
+  return false;
+}
+
+function 画游戏列表(学生) {
+  if (也许直接跳(学生.代号)) return;
+
+  $('hello-name').textContent = 学生.显示名;
+  $('hello-name').style.color = 学生.颜色;
+
+  const 列表 = $('game-list');
+  列表.innerHTML = '';
+  全部游戏.forEach(游戏 => {
+    const b = document.createElement('button');
+    b.className = 'game-btn' + (游戏.本周推荐 ? ' pick' : '');
+
+    if (游戏.本周推荐) {
+      const c = document.createElement('span');
+      c.className = 'crown';
+      c.textContent = '👑 本周推荐';
+      b.appendChild(c);
+    }
+
+    const e = document.createElement('span');
+    e.className = 'emoji';
+    e.textContent = 游戏.图标 || '🎮';
+    b.appendChild(e);
+
+    const 文字 = document.createElement('span');
+    const t = document.createElement('span'); t.className = 't'; t.textContent = 游戏.名字;
+    const d = document.createElement('span'); d.className = 'd'; d.textContent = 游戏.说明;
+    文字.appendChild(t); 文字.appendChild(document.createElement('br')); 文字.appendChild(d);
+    b.appendChild(文字);
+
+    b.addEventListener('click', () => 进游戏(游戏.文件, 学生.代号));
+    列表.appendChild(b);
+  });
+
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  $('page-games').classList.add('active');
+}
+
+function 启动() {
+  const 学生们 = 名单.map((代号, i) => ({
+    代号,
+    显示名: 代号.charAt(0).toUpperCase() + 代号.slice(1),
+    颜色: 颜色表[i % 颜色表.length],
+  }));
+
+  // 一个孩子 + 一个游戏 → 什么都不用点，直接进游戏
+  if (学生们.length === 1) { 画游戏列表(学生们[0]); return; }
+
+  const 列表 = $('who-list');
+  列表.innerHTML = '';
+  学生们.forEach(学生 => {
+    const b = document.createElement('button');
+    b.className = 'who-btn';
+    const dot = document.createElement('span');
+    dot.className = 'dot';
+    dot.style.background = 学生.颜色;
+    b.appendChild(dot);
+    b.appendChild(document.createTextNode('我是 ' + 学生.显示名));
+    b.addEventListener('click', () => 画游戏列表(学生));
+    列表.appendChild(b);
+  });
+  $('page-who').classList.add('active');
+}
+
+启动();
+</script>
