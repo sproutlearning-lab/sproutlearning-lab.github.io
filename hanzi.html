@@ -383,20 +383,31 @@ html, body {
 /* 课名条：既显示在玩哪一课，本身又是换课按钮。
    放在打招呼下面、游戏按钮上面，是视线必经之处，不会像原来那个底部灰按钮一样被看漏。 */
 .lesson-chip {
-  display: block; width: 100%;
-  margin-top: 14px; padding: 13px 16px;
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; flex-wrap: wrap;          /* 手机上放不下时，按钮自动换到第二行 */
+  width: 100%;
+  margin-top: 14px; padding: 12px 14px;
   background: var(--bg-soft);
   border: 3px solid var(--border); border-radius: 16px;
   font-family: var(--font-body); font-size: 15px; font-weight: 600;
   color: var(--text-2); text-align: center; cursor: pointer;
-  transition: border-color .15s ease;
+  box-shadow: 0 3px 0 var(--border);   /* 一点立体感，暗示这一块是可以按的 */
 }
-.lesson-chip:active { transform: translateY(2px); }
+.lesson-chip:active { transform: translateY(3px); box-shadow: none; }
+
+/* 「换一课」做成橙色实心药丸 —— 孩子一眼就知道这是个按钮，不是说明文字 */
 .lesson-chip .chip-arrow {
-  color: var(--accent); font-weight: 800; margin-left: 10px; white-space: nowrap;
+  display: inline-block; white-space: nowrap;
+  background: var(--accent); color: #fff;
+  font-size: 14px; font-weight: 800;
+  padding: 7px 14px; border-radius: 999px;
+  box-shadow: 0 2px 0 rgba(0,0,0,.15);
 }
 /* 只有一课时：没什么可换的，变成纯展示，别让孩子白点 */
-.lesson-chip.only-one { cursor: default; background: transparent; border-style: dashed; }
+.lesson-chip.only-one {
+  cursor: default; background: transparent;
+  border-style: dashed; box-shadow: none;
+}
 
 .menu { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
 
@@ -526,7 +537,7 @@ html, body {
     <!-- 课名本身就是换课按钮，一眼看得见（只有一课时会变成不可点的样子） -->
     <button class="lesson-chip" id="btn-lesson">
       <span id="menu-lesson"></span>
-      <span class="chip-arrow" id="chip-arrow">换一课 ▾</span>
+      <span class="chip-arrow" id="chip-arrow">🔄 换一课</span>
     </button>
     <div class="menu">
       <button class="mode-btn" data-mode="pinyin">
