@@ -128,6 +128,61 @@ const 全部课程 = [
 
      ========== 第 3 课模板结束 ========== */
 
+
+  /* ========== 复习合集 · 一二学期（上）89 字 ==========
+     跟普通课有三点不一样：
+     1. 「复习合集: true」—— 不带课号的链接不会默认打开它，永远打开最新的正课
+     2. 「每次随机抽: 12」—— 89 个字不会一次全出，每次随机挑 12 个，每次都不重样
+     3. 组词留空 —— 首页的「两字组词」按钮会自动隐藏，这一课只练汉字配拼音
+     ⚠️ 拼音是我标的，多音字请务必核对（详见交付说明里的清单） */
+  {
+    课名: "一二学期合集（上）",
+    复习合集: true,
+    每次随机抽: 12,
+
+    生字: [
+      { 字: "鱼", 拼音: "yú"   }, { 字: "心", 拼音: "xīn"  }, { 字: "色", 拼音: "sè"   },
+      { 字: "蓝", 拼音: "lán"  }, { 字: "红", 拼音: "hóng" }, { 字: "变", 拼音: "biàn" },
+      { 字: "开", 拼音: "kāi"  }, { 字: "合", 拼音: "hé"   }, { 字: "花", 拼音: "huā"  },
+      { 字: "叶", 拼音: "yè"   }, { 字: "睡", 拼音: "shuì" }, { 字: "夜", 拼音: "yè"   },
+      { 字: "风", 拼音: "fēng" }, { 字: "空", 拼音: "kōng" }, { 字: "进", 拼音: "jìn"  },
+      { 字: "片", 拼音: "piàn" }, { 字: "云", 拼音: "yún"  }, { 字: "吹", 拼音: "chuī" },
+      { 字: "冷", 拼音: "lěng" }, { 字: "热", 拼音: "rè"   }, { 字: "远", 拼音: "yuǎn" },
+      { 字: "近", 拼音: "jìn"  }, { 字: "高", 拼音: "gāo"  }, { 字: "软", 拼音: "ruǎn" },
+      { 字: "点", 拼音: "diǎn" }, { 字: "灾", 拼音: "zāi"  }, { 字: "快", 拼音: "kuài" },
+      { 字: "间", 拼音: "jiān" }, { 字: "困", 拼音: "kùn"  }, { 字: "打", 拼音: "dǎ"   },
+
+      { 字: "亚", 拼音: "yà"   }, { 字: "欧", 拼音: "ōu"   }, { 字: "非", 拼音: "fēi"  },
+      { 字: "美", 拼音: "měi"  }, { 字: "南", 拼音: "nán"  }, { 字: "北", 拼音: "běi"  },
+      { 字: "洲", 拼音: "zhōu" }, { 字: "洋", 拼音: "yáng" }, { 字: "极", 拼音: "jí"   },
+
+      { 字: "年", 拼音: "nián" }, { 字: "有", 拼音: "yǒu"  }, { 字: "余", 拼音: "yú"   },
+      { 字: "马", 拼音: "mǎ"   }, { 字: "吉", 拼音: "jí"   },
+
+      { 字: "住", 拼音: "zhù"  }, { 字: "拦", 拼音: "lán"  }, { 字: "海", 拼音: "hǎi"  },
+      { 字: "过", 拼音: "guò"  }, { 字: "挤", 拼音: "jǐ"   }, { 字: "推", 拼音: "tuī"  },
+      { 字: "发", 拼音: "fā"   }, { 字: "车", 拼音: "chē"  }, { 字: "电", 拼音: "diàn" },
+
+      { 字: "元", 拼音: "yuán" }, { 字: "宵", 拼音: "xiāo" }, { 字: "汤", 拼音: "tāng" },
+      { 字: "圆", 拼音: "yuán" }, { 字: "青", 拼音: "qīng" }, { 字: "园", 拼音: "yuán" },
+      { 字: "糖", 拼音: "táng" }, { 字: "画", 拼音: "huà"  }, { 字: "炮", 拼音: "pào"  },
+
+      { 字: "烧", 拼音: "shāo" }, { 字: "原", 拼音: "yuán" }, { 字: "丘", 拼音: "qiū"  },
+      { 字: "体", 拼音: "tǐ"   }, { 字: "很", 拼音: "hěn"  }, { 字: "加", 拼音: "jiā"  },
+      { 字: "信", 拼音: "xìn"  }, { 字: "给", 拼音: "gěi"  }, { 字: "护", 拼音: "hù"   },
+
+      { 字: "猫", 拼音: "māo"  }, { 字: "脚", 拼音: "jiǎo" }, { 字: "鼻", 拼音: "bí"   },
+      { 字: "眼", 拼音: "yǎn"  }, { 字: "肉", 拼音: "ròu"  }, { 字: "走", 拼音: "zǒu"  },
+      { 字: "看", 拼音: "kàn"  }, { 字: "说", 拼音: "shuō" }, { 字: "身", 拼音: "shēn" },
+
+      { 字: "脑", 拼音: "nǎo"  }, { 字: "工", 拼音: "gōng" }, { 字: "练", 拼音: "liàn" },
+      { 字: "指", 拼音: "zhǐ"  }, { 字: "记", 拼音: "jì"   }, { 字: "知", 拼音: "zhī"  },
+      { 字: "识", 拼音: "shí"  }, { 字: "号", 拼音: "hào"  }, { 字: "强", 拼音: "qiáng" },
+    ],
+
+    组词: [],
+  },
+
 ];
 /* ⬆⬆⬆  字库到这里结束，下面是游戏本身，不用改  ⬆⬆⬆ */
 
@@ -274,6 +329,25 @@ html, body {
   font-size: clamp(26px, 8vw, 36px); font-weight: 800; color: var(--text);
 }
 .hello .name { color: var(--accent); }
+
+/* 课名条：既显示在玩哪一课，本身又是换课按钮。
+   放在打招呼下面、游戏按钮上面，是视线必经之处，不会像原来那个底部灰按钮一样被看漏。 */
+.lesson-chip {
+  display: block; width: 100%;
+  margin-top: 14px; padding: 13px 16px;
+  background: var(--bg-soft);
+  border: 3px solid var(--border); border-radius: 16px;
+  font-family: var(--font-body); font-size: 15px; font-weight: 600;
+  color: var(--text-2); text-align: center; cursor: pointer;
+  transition: border-color .15s ease;
+}
+.lesson-chip:active { transform: translateY(2px); }
+.lesson-chip .chip-arrow {
+  color: var(--accent); font-weight: 800; margin-left: 10px; white-space: nowrap;
+}
+/* 只有一课时：没什么可换的，变成纯展示，别让孩子白点 */
+.lesson-chip.only-one { cursor: default; background: transparent; border-style: dashed; }
+
 .menu { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
 
 .mode-btn {
@@ -399,7 +473,11 @@ html, body {
   <section class="page" id="page-menu">
     <div class="spacer"></div>
     <p class="hello">你好，<span class="name" id="hello-name"></span>！</p>
-    <p class="subtitle" id="menu-lesson"></p>
+    <!-- 课名本身就是换课按钮，一眼看得见（只有一课时会变成不可点的样子） -->
+    <button class="lesson-chip" id="btn-lesson">
+      <span id="menu-lesson"></span>
+      <span class="chip-arrow" id="chip-arrow">换一课 ▾</span>
+    </button>
     <div class="menu">
       <button class="mode-btn" data-mode="pinyin">
         <span class="emoji">🔤</span>
@@ -417,8 +495,6 @@ html, body {
       </button>
     </div>
     <div class="spacer"></div>
-    <!-- 字库里有第 2 课以后才出现，让孩子能回头复习旧课 -->
-    <button class="btn ghost" id="btn-lesson" style="display:none">换一课</button>
     <!-- 只有一家多个孩子时才出现，让 Leo 不用刷新页面就能接着玩 -->
     <button class="btn ghost" id="btn-switch" style="display:none">换个人玩</button>
     <p class="footnote" id="menu-footnote"></p>
@@ -579,10 +655,21 @@ const 名单 = (参数.get('kids') || 参数.get('s') || '小朋友')
    所以每周加完新课，老链接自然就指向新课了，不用重新发。
    ------------------------------------------------------------ */
 const 课号参数 = parseInt(参数.get('课') || 参数.get('lesson') || '', 10);
+
+/* 不写课号时默认打开哪一课：最后一个**不是复习合集**的课。
+   为什么不直接用最后一课？因为复习合集排在列表末尾，
+   直接用最后一课的话，孩子每次进来玩的就变成复习合集，而不是本周新课了。 */
+const 默认课索引 = (() => {
+  for (let i = 全部课程.length - 1; i >= 0; i--) {
+    if (!全部课程[i].复习合集) return i;
+  }
+  return 全部课程.length - 1;
+})();
+
 let 当前课索引 =
   (Number.isInteger(课号参数) && 课号参数 >= 1 && 课号参数 <= 全部课程.length)
     ? 课号参数 - 1
-    : 全部课程.length - 1;
+    : 默认课索引;
 
 let 字库 = 全部课程[当前课索引];
 
@@ -734,7 +821,15 @@ function 开一局(模式) {
   let 全部题目;
 
   if (模式 === 'pinyin') {
-    全部题目 = 字库.生字.map(项 => ({
+    /* 复习合集有一两百个字，全摆出来要玩几十轮，孩子撑不住。
+       所以合集在字库里写「每次随机抽: 12」，每次开局随机挑 12 个来玩——
+       每次抽到的都不一样，正好适合反复复习。
+       普通课不写这个字段，行为跟以前完全一样。 */
+    let 源 = 字库.生字;
+    if (字库.每次随机抽 && 字库.每次随机抽 < 源.length) {
+      源 = 洗牌(源).slice(0, 字库.每次随机抽);
+    }
+    全部题目 = 源.map(项 => ({
       上: { 类型: 'zi', 文: 项.字 },
       下: { 类型: 'py', 文: 项.拼音 },
       字: 项.字,
@@ -989,12 +1084,24 @@ function 进主菜单(学生) {
   补寄漏掉的(学生.代号);
   $('hello-name').textContent = 学生.显示名;
   $('hello-name').style.color = 学生.颜色;
-  $('menu-lesson').textContent = 字库.课名 + ' · 共 ' + 字库.生字.length + ' 个字';
+
+  // 复习合集字很多，每次只随机抽一部分玩，所以说明写法不一样
+  $('menu-lesson').textContent = 字库.课名 + ' · ' + (字库.每次随机抽
+    ? '每次随机 ' + 字库.每次随机抽 + ' 个字（共 ' + 字库.生字.length + ' 字）'
+    : '共 ' + 字库.生字.length + ' 个字');
+
+  // 只有一课时，课名条变成纯展示，不显示「换一课」也点不动
+  const 多课 = 全部课程.length > 1;
+  $('chip-arrow').style.display = 多课 ? '' : 'none';
+  $('btn-lesson').classList.toggle('only-one', !多课);
+
+  // 没配组词的课（比如复习合集），直接把「两字组词」这个入口藏起来，
+  // 否则点进去是一片空白，孩子会以为坏了
+  const 有组词 = Array.isArray(字库.组词) && 字库.组词.length > 0;
+  document.querySelector('.mode-btn[data-mode="word"]').style.display = 有组词 ? '' : 'none';
 
   // 一台手机上有好几个孩子时，菜单页才给「换个人玩」的入口
   $('btn-switch').style.display = 名单.length > 1 ? '' : 'none';
-  // 字库里不止一课时，才给「换一课」的入口
-  $('btn-lesson').style.display = 全部课程.length > 1 ? '' : 'none';
 
   const 存档 = 读存档(学生.代号);
   $('menu-footnote').textContent =
