@@ -1,0 +1,1415 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>孩子该会的字，会了几个 · 萌芽新语</title>
+
+<!-- ==========================================================
+     汉字消消乐 · 萌芽新语
+     ==========================================================
+     单文件 HTML，双击就能玩，不需要联网、不需要账号。
+
+     ⬇⬇⬇  要换生字，只改下面这一段「字库」，别的地方都不用动  ⬇⬇⬇
+     ========================================================== -->
+<script>
+/* ============================================================
+   字表 —— 分龄自测版（Molly 改这里）
+   ------------------------------------------------------------
+   这是给**陌生家长**用的公开自测版，和作业版 hanzi.html 是两个文件。
+   改坏了也不会影响学生的作业工具。
+
+   三档字表共 168 字，依据两份权威字表交叉筛选：
+   · 《义务教育语文课程标准》(2022) 附录4 识字写字教学基本字表（300字）
+   · 《国际中文教育中文水平等级标准》GF0025-2021（HSK 3.0，3000字）
+   全部 168 字都同时落在这两份表里。选字与分档依据见
+   「3、海外中文班线上获客运营/02-三档字表.md」。
+
+   ⚠️ 和作业版的三点不同：
+   1. 每档都写「复习合集: true」——三档地位平等，没有"最新一课"
+   2. 每档都写「每次随机抽: 12」——一关 12 个字
+   3. 组词一律留空 []——自测只做汉字配拼音，不做组词
+
+   改字表时注意（和作业版一样的坑）：
+   · 引号必须是英文的 "  不能是中文的 " "
+   · 每行末尾的逗号不能少
+   · 拼音声调直接打出来（zhǒng），不要写成 zhong3
+   ============================================================ */
+const 全部课程 = [
+
+  /* ========== 分龄自测 · 5-6 岁 · 该会的字 （48 字）========== */
+  {
+    课名: "5-6 岁 · 该会的字",
+    复习合集: true,
+    每次随机抽: 12,
+
+    生字: [
+      { 字: "一", 拼音: "yī" }, { 字: "二", 拼音: "èr" }, { 字: "三", 拼音: "sān" }, { 字: "十", 拼音: "shí" },
+      { 字: "人", 拼音: "rén" }, { 字: "大", 拼音: "dà" }, { 字: "小", 拼音: "xiǎo" }, { 字: "上", 拼音: "shàng" },
+      { 字: "下", 拼音: "xià" }, { 字: "口", 拼音: "kǒu" }, { 字: "山", 拼音: "shān" }, { 字: "女", 拼音: "nǚ" },
+      { 字: "天", 拼音: "tiān" }, { 字: "日", 拼音: "rì" }, { 字: "月", 拼音: "yuè" }, { 字: "水", 拼音: "shuǐ" },
+      { 字: "火", 拼音: "huǒ" }, { 字: "手", 拼音: "shǒu" }, { 字: "门", 拼音: "mén" }, { 字: "马", 拼音: "mǎ" },
+      { 字: "牛", 拼音: "niú" }, { 字: "车", 拼音: "chē" }, { 字: "书", 拼音: "shū" }, { 字: "不", 拼音: "bù" },
+      { 字: "中", 拼音: "zhōng" }, { 字: "五", 拼音: "wǔ" }, { 字: "六", 拼音: "liù" }, { 字: "七", 拼音: "qī" },
+      { 字: "八", 拼音: "bā" }, { 字: "九", 拼音: "jiǔ" }, { 字: "分", 拼音: "fēn" }, { 字: "方", 拼音: "fāng" },
+      { 字: "文", 拼音: "wén" }, { 字: "心", 拼音: "xīn" }, { 字: "木", 拼音: "mù" }, { 字: "白", 拼音: "bái" },
+      { 字: "目", 拼音: "mù" }, { 字: "力", 拼音: "lì" }, { 字: "刀", 拼音: "dāo" }, { 字: "个", 拼音: "gè" },
+      { 字: "工", 拼音: "gōng" }, { 字: "太", 拼音: "tài" }, { 字: "见", 拼音: "jiàn" }, { 字: "午", 拼音: "wǔ" },
+      { 字: "毛", 拼音: "máo" }, { 字: "气", 拼音: "qì" }, { 字: "风", 拼音: "fēng" }, { 字: "开", 拼音: "kāi" },
+    ],
+
+    组词: [],
+  },
+
+  /* ========== 分龄自测 · 7-9 岁 · 该会的字 （60 字）========== */
+  {
+    课名: "7-9 岁 · 该会的字",
+    复习合集: true,
+    每次随机抽: 12,
+
+    生字: [
+      { 字: "爸", 拼音: "bà" }, { 字: "妈", 拼音: "mā" }, { 字: "好", 拼音: "hǎo" }, { 字: "你", 拼音: "nǐ" },
+      { 字: "我", 拼音: "wǒ" }, { 字: "他", 拼音: "tā" }, { 字: "她", 拼音: "tā" }, { 字: "吃", 拼音: "chī" },
+      { 字: "走", 拼音: "zǒu" }, { 字: "来", 拼音: "lái" }, { 字: "去", 拼音: "qù" }, { 字: "坐", 拼音: "zuò" },
+      { 字: "住", 拼音: "zhù" }, { 字: "听", 拼音: "tīng" }, { 字: "饭", 拼音: "fàn" }, { 字: "床", 拼音: "chuáng" },
+      { 字: "快", 拼音: "kuài" }, { 字: "早", 拼音: "zǎo" }, { 字: "年", 拼音: "nián" }, { 字: "时", 拼音: "shí" },
+      { 字: "里", 拼音: "lǐ" }, { 字: "男", 拼音: "nán" }, { 字: "生", 拼音: "shēng" }, { 字: "用", 拼音: "yòng" },
+      { 字: "外", 拼音: "wài" }, { 字: "出", 拼音: "chū" }, { 字: "奶", 拼音: "nǎi" }, { 字: "老", 拼音: "lǎo" },
+      { 字: "地", 拼音: "dì" }, { 字: "过", 拼音: "guò" }, { 字: "在", 拼音: "zài" }, { 字: "有", 拼音: "yǒu" },
+      { 字: "同", 拼音: "tóng" }, { 字: "回", 拼音: "huí" }, { 字: "肉", 拼音: "ròu" }, { 字: "先", 拼音: "xiān" },
+      { 字: "后", 拼音: "hòu" }, { 字: "会", 拼音: "huì" }, { 字: "多", 拼音: "duō" }, { 字: "衣", 拼音: "yī" },
+      { 字: "问", 拼音: "wèn" }, { 字: "字", 拼音: "zì" }, { 字: "米", 拼音: "mǐ" }, { 字: "自", 拼音: "zì" },
+      { 字: "全", 拼音: "quán" }, { 字: "合", 拼音: "hé" }, { 字: "交", 拼音: "jiāo" }, { 字: "灯", 拼音: "dēng" },
+      { 字: "红", 拼音: "hóng" }, { 字: "光", 拼音: "guāng" }, { 字: "羊", 拼音: "yáng" }, { 字: "花", 拼音: "huā" },
+      { 字: "医", 拼音: "yī" }, { 字: "身", 拼音: "shēn" }, { 字: "体", 拼音: "tǐ" }, { 字: "间", 拼音: "jiān" },
+      { 字: "近", 拼音: "jìn" }, { 字: "把", 拼音: "bǎ" }, { 字: "每", 拼音: "měi" }, { 字: "张", 拼音: "zhāng" },
+    ],
+
+    组词: [],
+  },
+
+  /* ========== 分龄自测 · 10-12 岁 · 该会的字 （60 字）========== */
+  {
+    课名: "10-12 岁 · 该会的字",
+    复习合集: true,
+    每次随机抽: 12,
+
+    生字: [
+      { 字: "玩", 拼音: "wán" }, { 字: "现", 拼音: "xiàn" }, { 字: "雨", 拼音: "yǔ" }, { 字: "到", 拼音: "dào" },
+      { 字: "果", 拼音: "guǒ" }, { 字: "国", 拼音: "guó" }, { 字: "明", 拼音: "míng" }, { 字: "和", 拼音: "hé" },
+      { 字: "朋", 拼音: "péng" }, { 字: "放", 拼音: "fàng" }, { 字: "学", 拼音: "xué" }, { 字: "房", 拼音: "fáng" },
+      { 字: "话", 拼音: "huà" }, { 字: "画", 拼音: "huà" }, { 字: "鱼", 拼音: "yú" }, { 字: "狗", 拼音: "gǒu" },
+      { 字: "河", 拼音: "hé" }, { 字: "空", 拼音: "kōng" }, { 字: "面", 拼音: "miàn" }, { 字: "点", 拼音: "diǎn" },
+      { 字: "星", 拼音: "xīng" }, { 字: "前", 拼音: "qián" }, { 字: "洗", 拼音: "xǐ" }, { 字: "穿", 拼音: "chuān" },
+      { 字: "语", 拼音: "yǔ" }, { 字: "说", 拼音: "shuō" }, { 字: "孩", 拼音: "hái" }, { 字: "春", 拼音: "chūn" },
+      { 字: "草", 拼音: "cǎo" }, { 字: "轻", 拼音: "qīng" }, { 字: "背", 拼音: "bèi" }, { 字: "亮", 拼音: "liàng" },
+      { 字: "城", 拼音: "chéng" }, { 字: "美", 拼音: "měi" }, { 字: "首", 拼音: "shǒu" }, { 字: "班", 拼音: "bān" },
+      { 字: "起", 拼音: "qǐ" }, { 字: "都", 拼音: "dōu" }, { 字: "校", 拼音: "xiào" }, { 字: "样", 拼音: "yàng" },
+      { 字: "桌", 拼音: "zhuō" }, { 字: "饿", 拼音: "è" }, { 字: "高", 拼音: "gāo" }, { 字: "站", 拼音: "zhàn" },
+      { 字: "家", 拼音: "jiā" }, { 字: "课", 拼音: "kè" }, { 字: "笔", 拼音: "bǐ" }, { 字: "海", 拼音: "hǎi" },
+      { 字: "被", 拼音: "bèi" }, { 字: "常", 拼音: "cháng" }, { 字: "晚", 拼音: "wǎn" }, { 字: "理", 拼音: "lǐ" },
+      { 字: "雪", 拼音: "xuě" }, { 字: "船", 拼音: "chuán" }, { 字: "猫", 拼音: "māo" }, { 字: "情", 拼音: "qíng" },
+      { 字: "跑", 拼音: "pǎo" }, { 字: "道", 拼音: "dào" }, { 字: "短", 拼音: "duǎn" }, { 字: "跳", 拼音: "tiào" },
+    ],
+
+    组词: [],
+  },
+
+];
+/* ⬆⬆⬆  字表到这里结束，下面是游戏本身  ⬆⬆⬆ */
+
+
+/* ------------------------------------------------------------
+   每轮出几对。12 个字 ÷ 5 → 分 3 轮，手机上一屏刚好放得下。
+   ------------------------------------------------------------ */
+const 每轮对数 = 5;
+
+
+/* ============================================================
+   联系方式 —— 显示在结论页最下面的署名里
+   ------------------------------------------------------------
+   ⚠️ 为什么号码要拆成几段，不直接写完整的：
+
+   这个网页和它的源码都是公开的，而且没法不公开 ——
+   GitHub Pages 免费版只能从公开仓库发布；就算升级到 Pro
+   （可以用私有仓库），发布出来的网站本身依然是公开的。
+
+   网上有专门扫网页、收集微信号/邮箱/电话的爬虫，是无差别扫的。
+   完整字符串直接写在源码里会被自动抓走，
+   后果是陆续收到一堆陌生人加好友（营销、拉群、偶尔诈骗）。
+
+   拆成几段之后：
+   · 爬虫抓静态源码 → 拿到的是碎片，拼不出完整的号
+   · GitHub 代码搜索搜完整号 → 搜不到
+   · 家长看到的页面 → 完全一样，点一下照样整个复制
+
+   ⚠️ 它只挡自动收集，挡不住人。有人打开页面照着抄是拦不住的，
+   但那种人本来就是冲你来的，不是骚扰源。
+
+   👉 要换号（比如以后换成工作号）：
+      把新号随便拆成 3-4 段填进下面这一行，怎么分都行，
+      比如 'abc-work-2026' 可以写成 ['abc-', 'work', '-2026']
+   ============================================================ */
+const 微信号 = ['wei', 'lanxiao', 'meng'].join('');
+
+
+/* ============================================================
+   数据上报 —— 玩完自动寄一条到你的 Google 表格
+   ------------------------------------------------------------
+   孩子和家长完全无感：不用登录、不用点提交、看不到任何提示。
+
+   · 不想收数据了 → 把「开关」改成 false，游戏照常玩，只是不寄了
+   · 换了新表单   → 改「地址」和下面 8 个编号（编号在表单的预填链接里）
+   · 寄不出去时   → 记录先存在手机里，下次打开游戏自动补寄，不会丢
+   ============================================================ */
+const 上报配置 = {
+  开关: true,
+
+  地址: "https://docs.google.com/forms/d/e/1FAIpQLSdGAwu8tktcYEq8n7X56Pxf5qRY3aQnwH0w7g6qsTDB3E5Hag/formResponse",
+
+  // 左边是游戏里的字段名，右边是表单里那个问题的编号，一一对应
+  字段: {
+    学生:   "entry.591319177",
+    课:     "entry.988253182",
+    模式:   "entry.25875432",
+    对:     "entry.1014066908",
+    错:     "entry.1522432224",
+    正确率: "entry.2020872622",
+    错字:   "entry.1595049501",
+    用时秒: "entry.1122663479",
+  },
+};
+</script>
+
+<style>
+/* ============================================================
+   视觉：直接沿用《中文课件》skill 的设计令牌，保证游戏和课件是同一套模样
+   ============================================================ */
+:root {
+  --bg:        #FFFDF7;   /* 页面底色，暖白 */
+  --bg-soft:   #F4EFE4;   /* 卡片区底色 */
+  --primary:   #2F5D50;   /* 主色 */
+  --accent:    #E8734A;   /* 强调色 */
+  --accent-2:  #F2B233;   /* 次强调，奖励 */
+  --text:      #26221E;
+  --text-2:    #5C554D;
+  --border:    #DED5C4;
+  --ok:        #3E8E5A;   /* 答对 */
+  --warn:      #C4462F;   /* 答错 */
+
+  --font-body:   "Nunito", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  /* 生字必须是楷体：笔画形态接近手写，孩子照着认、照着写都对得上 */
+  --font-hanzi:  "Kaiti SC", "STKaiti", "KaiTi", "Kaiti TC", "BiauKai", "PingFang SC", serif;
+  --font-pinyin: "Nunito", "Arial", sans-serif;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+  margin: 0; padding: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  /* 防止孩子长按选中文字弹出复制菜单，打断游戏 */
+  -webkit-user-select: none; user-select: none;
+  /* 防止双指缩放和上下橡皮筋，手机上手感更像 App */
+  touch-action: manipulation;
+  overscroll-behavior: none;
+}
+
+/* 整个游戏放在一个居中的窄栏里。
+   手机上占满宽度，电脑上限制到 560px —— 否则在大屏幕上字卡会被拉得很散。 */
+.app {
+  max-width: 560px;
+  margin: 0 auto;
+  min-height: 100dvh;              /* dvh = 动态视口高度，手机上地址栏收起时不会跳 */
+  padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
+  display: flex; flex-direction: column;
+}
+
+/* ---------- 页面切换 ---------- */
+.page { display: none; flex: 1; flex-direction: column; }
+.page.active { display: flex; }
+
+/* ---------- 通用零件 ---------- */
+.title {
+  font-size: clamp(24px, 7vw, 34px); font-weight: 800;
+  color: var(--primary); text-align: center; line-height: 1.3;
+  margin: 0;
+}
+.subtitle {
+  font-size: clamp(14px, 4vw, 17px); color: var(--text-2);
+  text-align: center; margin: 8px 0 0; line-height: 1.5;
+}
+
+.btn {
+  display: block; width: 100%;
+  border: none; border-radius: 18px;
+  padding: 18px 20px;
+  font-family: var(--font-body);
+  font-size: clamp(17px, 5vw, 21px); font-weight: 700;
+  color: #fff; background: var(--primary);
+  box-shadow: 0 5px 0 rgba(0,0,0,.16);
+  cursor: pointer;
+  transition: transform .1s ease, box-shadow .1s ease;
+}
+.btn:active { transform: translateY(4px); box-shadow: 0 1px 0 rgba(0,0,0,.16); }
+.btn.accent  { background: var(--accent); }
+.btn.ghost   { background: transparent; color: var(--text-2);
+               box-shadow: none; font-size: 16px; padding: 12px; font-weight: 600; }
+
+.spacer { flex: 1; }
+
+/* ============================================================
+   选人页
+   ============================================================ */
+#page-who .who-list { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
+.who-btn {
+  border: 4px solid var(--border); border-radius: 20px;
+  background: #fff; padding: 22px;
+  font-family: var(--font-body); font-size: 24px; font-weight: 800;
+  color: var(--text); cursor: pointer;
+  box-shadow: 0 5px 0 var(--border);
+  display: flex; align-items: center; gap: 16px; justify-content: center;
+}
+.who-btn:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--border); }
+.who-btn .dot { width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0; }
+/* 课名比人名长，字号降一档，免得换行 */
+.who-btn.lesson { font-size: 19px; }
+/* 标出现在正在玩的那一课 */
+.who-btn.current { border-color: var(--accent); box-shadow: 0 5px 0 var(--accent); }
+
+/* ============================================================
+   主菜单
+   ============================================================ */
+.hello {
+  text-align: center; margin: 8px 0 0;
+  font-size: clamp(26px, 8vw, 36px); font-weight: 800; color: var(--text);
+}
+.hello .name { color: var(--accent); }
+
+/* 课名条：既显示在玩哪一课，本身又是换课按钮。
+   放在打招呼下面、游戏按钮上面，是视线必经之处，不会像原来那个底部灰按钮一样被看漏。 */
+.lesson-chip {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; flex-wrap: wrap;          /* 手机上放不下时，按钮自动换到第二行 */
+  width: 100%;
+  margin-top: 14px; padding: 12px 14px;
+  background: var(--bg-soft);
+  border: 3px solid var(--border); border-radius: 16px;
+  font-family: var(--font-body); font-size: 15px; font-weight: 600;
+  color: var(--text-2); text-align: center; cursor: pointer;
+  box-shadow: 0 3px 0 var(--border);   /* 一点立体感，暗示这一块是可以按的 */
+}
+.lesson-chip:active { transform: translateY(3px); box-shadow: none; }
+
+/* 「换一课」做成橙色实心药丸 —— 孩子一眼就知道这是个按钮，不是说明文字 */
+.lesson-chip .chip-arrow {
+  display: inline-block; white-space: nowrap;
+  background: var(--accent); color: #fff;
+  font-size: 14px; font-weight: 800;
+  padding: 7px 14px; border-radius: 999px;
+  box-shadow: 0 2px 0 rgba(0,0,0,.15);
+}
+/* 只有一课时：没什么可换的，变成纯展示，别让孩子白点 */
+.lesson-chip.only-one {
+  cursor: default; background: transparent;
+  border-style: dashed; box-shadow: none;
+}
+
+.menu { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
+
+.mode-btn {
+  border: 4px solid var(--border); border-radius: 22px;
+  background: #fff; padding: 20px; cursor: pointer; text-align: left;
+  box-shadow: 0 5px 0 var(--border);
+  display: flex; align-items: center; gap: 16px;
+  font-family: var(--font-body);
+}
+.mode-btn:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--border); }
+.mode-btn .emoji { font-size: 40px; line-height: 1; flex-shrink: 0; }
+.mode-btn .t { font-size: 20px; font-weight: 800; color: var(--text); }
+.mode-btn .d { font-size: 14px; color: var(--text-2); margin-top: 4px; line-height: 1.4; }
+
+/* ============================================================
+   游戏页
+   ============================================================ */
+.hud {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 15px; font-weight: 700; color: var(--text-2);
+  padding: 4px 2px 12px;
+}
+.hud .round { color: var(--primary); }
+.hud .score .wrong { color: var(--warn); }
+
+.prompt {
+  text-align: center; font-size: 15px; color: var(--text-2);
+  margin-bottom: 12px; min-height: 22px; font-weight: 600;
+}
+.prompt.hit  { color: var(--ok); }
+.prompt.miss { color: var(--warn); }
+
+/* 两个区：上面一区、下面一区。中间用一条虚线分开，
+   让孩子一眼看懂「上面挑一个、下面挑一个」 */
+.zone { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-content: center; flex: 1; }
+.divider {
+  border: none; border-top: 3px dashed var(--border);
+  margin: 14px 0; flex-shrink: 0;
+}
+
+/* ---------- 字牌 ---------- */
+.tile {
+  flex: 1 1 28%; min-width: 84px; max-width: 150px;
+  min-height: 84px;
+  border: 4px solid var(--border); border-radius: 18px;
+  background: #fff; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 2px; padding: 10px 6px;
+  box-shadow: 0 5px 0 var(--border);
+  transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease, opacity .3s ease;
+}
+.tile:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--border); }
+
+/* 汉字牌：楷体，字要大 */
+.tile .zi {
+  font-family: var(--font-hanzi);
+  font-size: clamp(36px, 11vw, 52px);
+  line-height: 1.1; color: var(--text); font-weight: 400;
+}
+/* 拼音牌 */
+.tile .py {
+  font-family: var(--font-pinyin);
+  font-size: clamp(18px, 5.5vw, 24px);
+  font-weight: 700; color: var(--accent); letter-spacing: .02em;
+}
+
+/* 选中 */
+.tile.picked { border-color: var(--accent); box-shadow: 0 5px 0 var(--accent); transform: translateY(-3px); }
+/* 配对成功 —— 变绿后淡出，但位置留着，避免其它牌乱跳 */
+.tile.done   { border-color: var(--ok); box-shadow: 0 5px 0 var(--ok); background: #F1F8F3; }
+.tile.gone   { opacity: 0; pointer-events: none; }
+/* 配错 —— 抖一下 */
+.tile.bad    { border-color: var(--warn); box-shadow: 0 5px 0 var(--warn); animation: shake .3s; }
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  25%     { transform: translateX(-7px); }
+  75%     { transform: translateX(7px); }
+}
+
+/* ============================================================
+   结算页
+   ============================================================ */
+.result-emoji { font-size: 64px; text-align: center; line-height: 1; margin-top: 12px; }
+.result-line  { text-align: center; font-size: clamp(20px, 6vw, 26px); font-weight: 800; margin-top: 14px; }
+
+.stat-row { display: flex; gap: 12px; margin-top: 22px; }
+.stat {
+  flex: 1; background: var(--bg-soft); border-radius: 18px;
+  padding: 16px 10px; text-align: center;
+}
+.stat .n { font-size: 30px; font-weight: 800; color: var(--primary); line-height: 1.1; }
+.stat .n.bad { color: var(--warn); }
+.stat .l { font-size: 13px; color: var(--text-2); margin-top: 5px; font-weight: 600; }
+
+/* 错的字单独列出来 —— 这块对 Molly 最有价值：直接告诉她下节课要回炉哪几个字 */
+.review {
+  margin-top: 22px; background: #FFF6F2;
+  border: 3px solid var(--accent); border-radius: 18px; padding: 16px;
+}
+.review .h { font-size: 14px; font-weight: 800; color: var(--accent); text-align: center; }
+.review .zi-list { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 12px; }
+.review .zi-item {
+  background: #fff; border: 3px solid var(--border); border-radius: 14px;
+  padding: 8px 12px; text-align: center; min-width: 62px;
+}
+.review .zi-item .z { font-family: var(--font-hanzi); font-size: 34px; line-height: 1.1; }
+.review .zi-item .p { font-family: var(--font-pinyin); font-size: 13px; font-weight: 700; color: var(--accent); }
+
+.footnote { text-align: center; font-size: 12px; color: var(--text-2); opacity: .7; padding-top: 14px; }
+
+/* ============================================================
+   结论页 —— 这一页是给**家长**看的，不是给孩子看的
+   ------------------------------------------------------------
+   设计纪律（改样式时别破坏）：
+   1. 结果先给，署名放最下面，中间不许有任何东西挡住结果
+   2. 不出现"立即报名/限时优惠/扫码领取"
+   3. 那句给家长的建议必须是他能原样转述给家人听的话
+   ============================================================ */
+.report-score {
+  text-align: center; margin: 18px 0 6px;
+}
+.report-score .big {
+  font-size: 54px; font-weight: 800; color: var(--primary); line-height: 1;
+}
+.report-score .big .of { font-size: 26px; color: var(--text-2); font-weight: 700; }
+.report-score .cap { font-size: 14px; color: var(--text-2); margin-top: 8px; font-weight: 600; }
+
+/* 给家长的那句话 —— 全页最重要的一块 */
+.report-tip {
+  margin-top: 18px; background: #F3F8F4;
+  border: 3px solid var(--primary); border-radius: 18px; padding: 16px;
+}
+.report-tip .h { font-size: 13px; font-weight: 800; color: var(--primary); margin-bottom: 8px; }
+.report-tip .b { font-size: 15px; line-height: 1.65; color: var(--text); }
+
+/* 署名：这是**署名**不是广告，样式上要克制 */
+.sign {
+  margin-top: 22px; padding-top: 16px; border-top: 2px dashed var(--border);
+  text-align: center; font-size: 13px; color: var(--text-2); line-height: 1.7;
+}
+.sign .who { font-weight: 800; color: var(--primary); font-size: 15px; }
+.sign .wx {
+  display: inline-block; margin-top: 6px; padding: 6px 14px;
+  background: #fff; border: 2px solid var(--border); border-radius: 12px;
+  font-weight: 700; color: var(--text);
+}
+/* user-select 只放在号码上，不放在整个框上 ——
+   这样家长点一下选中的是纯微信号，不会连「微信 」两个字一起复制走。 */
+.sign .wx-num { user-select: all; }
+
+/* 复制成功的小提示 */
+.copied {
+  position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%);
+  background: var(--primary); color: #fff; padding: 12px 22px; border-radius: 14px;
+  font-size: 15px; font-weight: 700; box-shadow: 0 6px 20px rgba(0,0,0,.2);
+  opacity: 0; pointer-events: none; transition: opacity .25s ease; z-index: 50;
+}
+.copied.show { opacity: 1; }
+</style>
+
+<div class="app">
+
+  <!-- ---------- 首页：选年龄档 ---------- -->
+  <section class="page" id="page-who">
+    <div class="spacer"></div>
+    <h1 class="title">孩子该会的字，会了几个？</h1>
+    <p class="subtitle">
+      12 个字一关，玩几分钟就有结果。<br>
+      不用注册，不用下载。
+    </p>
+    <div class="who-list" id="who-list"></div>
+    <p class="footnote">选孩子的年龄就好，测的是「认字」，不是听说。</p>
+    <div class="spacer"></div>
+  </section>
+
+  <!-- ---------- 准备开始 ----------
+       作业版这里是主菜单（换课/换人/两种玩法），自测版全部去掉：
+       陌生家长每多看见一个选项，就多一次流失机会。 -->
+  <section class="page" id="page-menu">
+    <div class="spacer"></div>
+    <p class="hello"><span class="name" id="hello-name"></span></p>
+    <p class="subtitle" id="menu-lesson"></p>
+    <div class="menu">
+      <button class="mode-btn" data-mode="pinyin">
+        <span class="emoji">🔤</span>
+        <span>
+          <span class="t" id="start-title">开始</span>
+          <span class="d">上面挑一个字，下面挑它的拼音</span>
+        </span>
+      </button>
+    </div>
+    <div class="spacer"></div>
+    <button class="btn ghost" id="btn-switch">换个年龄</button>
+    <p class="footnote" id="menu-footnote"></p>
+  </section>
+
+  <!-- ---------- 游戏页 ---------- -->
+  <section class="page" id="page-play">
+    <div class="hud">
+      <span class="round" id="hud-round"></span>
+      <span class="score" id="hud-score"></span>
+    </div>
+    <p class="prompt" id="prompt"></p>
+    <div class="zone" id="zone-top"></div>
+    <hr class="divider">
+    <div class="zone" id="zone-bottom"></div>
+    <button class="btn ghost" id="btn-quit">退出</button>
+  </section>
+
+  <!-- ---------- 每一关打完的小结（给孩子看） ---------- -->
+  <section class="page" id="page-done">
+    <div class="spacer"></div>
+    <div class="result-emoji" id="done-emoji"></div>
+    <p class="result-line" id="done-line"></p>
+    <div class="stat-row">
+      <div class="stat"><div class="n"     id="stat-right"></div><div class="l">一次就认对</div></div>
+      <div class="stat"><div class="n bad" id="stat-wrong"></div><div class="l">没认出来</div></div>
+      <div class="stat"><div class="n"     id="stat-time"></div> <div class="l">用时（秒）</div></div>
+    </div>
+    <div class="review" id="review" style="display:none">
+      <div class="h">这几个字再看看 👀</div>
+      <div class="zi-list" id="review-list"></div>
+    </div>
+    <div class="spacer"></div>
+    <button class="btn accent" id="btn-again">再来一关</button>
+    <button class="btn ghost"  id="btn-report">看看结果</button>
+    <p class="footnote" id="done-foot"></p>
+  </section>
+
+  <!-- ---------- 结论页（给家长看） ----------
+       全案的核心。孩子玩完，家长要在这一页看到一句
+       他能原样转述给爸爸/外婆听的话。 -->
+  <section class="page" id="page-report">
+    <div class="spacer"></div>
+    <h1 class="title" id="rp-title"></h1>
+
+    <div class="report-score">
+      <div class="big"><span id="rp-right"></span><span class="of"> / <span id="rp-total"></span></span></div>
+      <div class="cap" id="rp-cap"></div>
+    </div>
+
+    <div class="review" id="rp-review" style="display:none">
+      <div class="h">这几个字第一次没认出来 👀</div>
+      <div class="zi-list" id="rp-review-list"></div>
+    </div>
+
+    <div class="report-tip">
+      <div class="h">── 这个结果怎么用 ──</div>
+      <div class="b" id="rp-tip"></div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <button class="btn accent" id="btn-share" style="display:none">把结果发给朋友</button>
+    <button class="btn ghost"  id="btn-more">换一档再测</button>
+
+    <!-- 署名：一句话说清我是谁、我能回答什么问题，然后闭嘴 -->
+    <div class="sign">
+      <div class="who">萌芽新语 · 惠灵顿</div>
+      我是 Molly，教 7–12 岁华裔孩子<b>用中文学科学</b>。<br>
+      想知道你家孩子该从哪里开始，可以问我：
+      <!-- 微信号不写在这里，由脚本在页面加载时填进去（原因见「联系方式」那段注释） -->
+      <div class="wx">微信 <span class="wx-num" id="wx-id"></span></div>
+    </div>
+  </section>
+
+</div>
+
+<div class="copied" id="copied">已复制，去粘贴给朋友吧 ✓</div>
+
+<script>
+/* ============================================================
+   游戏本体
+   ============================================================ */
+
+/* ---------- 开工前先看看字库是不是被改坏了 ----------
+   为什么要有这一段：字库写在上面**另一个**代码块里。
+   如果那里有语法错（最常见的三种：中文引号 “ ” / 少了逗号 / 模板注释没删干净），
+   浏览器会把那整块跳过，于是「全部课程」根本不存在——
+   页面会变成一片空白，而且控制台经常什么都不说。
+   新手遇到这个只会觉得"游戏坏了"。这里兜住它，直接把话讲明白。 */
+(function 检查字库() {
+  const 出错 = (原因) => {
+    document.body.innerHTML =
+      '<div style="max-width:520px;margin:12vh auto;padding:24px;font:16px/1.7 -apple-system,sans-serif;color:#26221E">' +
+      '<div style="font-size:44px;text-align:center">🔧</div>' +
+      '<h2 style="color:#C4462F;text-align:center;margin:12px 0 20px">字库改坏了，游戏打不开</h2>' +
+      '<p><b>问题：</b>' + 原因 + '</p>' +
+      '<p><b>照这个顺序检查文件最上面那段「字库」：</b></p>' +
+      '<ol style="padding-left:20px">' +
+      '<li>引号是不是打成了中文的 <b>“ ”</b>？必须是英文的 <b>" "</b>（最常见）</li>' +
+      '<li>每一行末尾的<b>逗号</b>是不是漏了？</li>' +
+      '<li>加新课时，模板外面的<b>注释符号</b>（<b>/*</b> 和 <b>*/</b>）删干净了吗？</li>' +
+      '<li>每一段 <b>{ }</b> 之间有没有用逗号隔开？</li>' +
+      '</ol>' +
+      '<p style="color:#5C554D;font-size:14px">改好保存，刷新页面就行。改之前建议先复制一份备份。</p>' +
+      '</div>';
+    throw new Error('字库未通过检查：' + 原因);
+  };
+
+  if (typeof 全部课程 === 'undefined')  出错('整段字库都没能读进来，说明里面有语法错误。');
+  if (!Array.isArray(全部课程))          出错('「全部课程」不是一个清单，最外层的方括号 [ ] 可能弄丢了。');
+  if (全部课程.length === 0)             出错('字库里一课都没有。');
+
+  全部课程.forEach((课, i) => {
+    const 第几课 = '第 ' + (i + 1) + ' 段课程';
+    if (!课 || typeof 课 !== 'object')        出错(第几课 + ' 格式不对。');
+    if (!课.课名)                              出错(第几课 + ' 少了「课名」。');
+    if (!Array.isArray(课.生字) || !课.生字.length) 出错('《' + (课.课名 || 第几课) + '》没有生字。');
+    if (!Array.isArray(课.组词))               出错('《' + 课.课名 + '》的「组词」不是清单。');
+    课.生字.forEach((项, j) => {
+      if (!项 || !项.字 || !项.拼音)
+        出错('《' + 课.课名 + '》第 ' + (j + 1) + ' 个生字缺了「字」或「拼音」。');
+    });
+    课.组词.forEach((组, j) => {
+      /* 一组正常是两个字 ["种","子"]；
+         也允许第三个元素，用来指定这组算在哪个生字头上 ["身","体","体"] */
+      if (!Array.isArray(组) || 组.length < 2 || 组.length > 3 || !组[0] || !组[1])
+        出错('《' + 课.课名 + '》第 ' + (j + 1) + ' 组词要写成两个字 ["种", "子"]，'
+             + '或者两个字加一个指定字 ["身", "体", "体"]。');
+    });
+  });
+})();
+
+/* ---------- 小工具 ---------- */
+const $  = (id) => document.getElementById(id);
+
+/* 判对错时，把「上面的字」和「下面的字」拼成一个 key 去查表。
+   中间垫这个分隔符，避免「果+皮」和「果皮+空」被当成同一种搭配。
+   \u0000 是个绝不会出现在汉字或拼音里的字符。
+   ⚠️ 建表和判定必须用同一个值——所以写成常量。
+   （这里踩过坑：两处各写各的，一处是空字符一处是空格，结果每一对都判错。） */
+const 分隔符 = '\u0000';
+
+/* 洗牌：把数组顺序打乱。
+   用的是 Fisher-Yates 算法 —— 从后往前，每个位置随机跟前面某个位置换一下。
+   为什么不用 sort(() => Math.random()-0.5)？那种写法看着简单但打乱得不均匀，
+   有些顺序出现的概率会明显偏高，孩子多玩几次就会觉得"怎么老是这样"。 */
+function 洗牌(数组) {
+  const a = 数组.slice();                      // 复制一份，不改原数组
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+/* 把题目分成几轮。
+   为什么不直接按「每轮 5 对」硬切？因为 6 个字会切成 5+1，
+   第二轮孤零零只剩一对，孩子会觉得莫名其妙。
+   这里先算要几轮，再把题目尽量平均分：6 个 → 3+3，9 个 → 5+4，12 个 → 4+4+4。 */
+function 分轮(数组, 理想每轮) {
+  if (数组.length <= 理想每轮) return [数组];
+  const 轮数 = Math.ceil(数组.length / 理想每轮);
+  const 每轮 = Math.ceil(数组.length / 轮数);
+  const 结果 = [];
+  for (let i = 0; i < 数组.length; i += 每轮) 结果.push(数组.slice(i, i + 每轮));
+  return 结果;
+}
+
+function 切页(页面id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  $(页面id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+
+/* ============================================================
+   ⚠️ 自测版和作业版最根本的区别：这里不收集任何身份信息
+   ------------------------------------------------------------
+   作业版靠网址里的 ?kids=amy 认人，因为那是自己的学生。
+   自测版面对的是陌生家长，所以：
+   · 不问名字、不问邮箱、不问微信，一个字段都不收
+   · 只问"孩子几岁"，用来挑哪一档字表
+   · 寄回表格的数据是匿名的（见下面「寄一条」那段）
+
+   这么做不只是为了体验好，也是为了合规：
+   新西兰 Privacy Act 2020 要求只收必要信息、收集时须告知、
+   跨境传输（Google 表单数据存在美国）须有保障。
+   什么都不收，这些问题就都不存在了。
+
+   ?档=2 可以直接打开第 2 档，方便你自己检查，家长用不到。
+   ============================================================ */
+const 参数 = new URLSearchParams(location.search);
+const 档号参数 = parseInt(参数.get('档') || 参数.get('level') || '', 10);
+
+let 当前课索引 =
+  (Number.isInteger(档号参数) && 档号参数 >= 1 && 档号参数 <= 全部课程.length)
+    ? 档号参数 - 1
+    : 0;
+
+let 字库 = 全部课程[当前课索引];
+
+/* 三档各一个颜色，选年龄时一眼区分 */
+const 颜色表 = ['#3E8E5A', '#E8734A', '#7B5EA7'];
+const 取颜色 = (i) => 颜色表[i % 颜色表.length];
+
+let 当前学生 = null;   // 存的是「年龄档」，不是孩子
+
+/* ------------------------------------------------------------
+   一次自测最多几关。4 关 × 12 字 = 48 字，约 10-12 分钟。
+   ⚠️ 别调大：陌生家长的耐心是有限的，玩不完反而拿不到结果。
+   （每关结束都能拿结果，所以玩 1 关就走的人也有收获）
+   ------------------------------------------------------------ */
+const 最多几关 = 4;
+
+/* 玩满几关才出现「发给朋友」按钮。
+   为什么不是 1 关就给：玩 1 关就分享，家长自己都没觉得有价值，
+   转出去的东西也没有说服力。让愿意玩完的人当传播者。 */
+const 分享门槛 = 3;
+
+/* 本次自测的累计状态（跨关累计，回首页才清空） */
+let 本次 = null;
+function 开新一次自测(档位) {
+  本次 = {
+    档名: 档位.显示名,
+    关数: 0,
+    首答: {},        // { "藏": "错" } —— 每个字**第一次**认的结果，见「判定」
+    用时: 0,
+  };
+}
+
+
+/* ============================================================
+   本地存档
+   ------------------------------------------------------------
+   ⚠️ 两个关键点：
+   1. 存档的名字里带学生代号（xxl_amy / xxl_leo），
+      这样同一台手机上两个孩子各存各的，不会互相覆盖。
+      浏览器的存储是按"网站"分的，不按网址参数分 —— 所以必须自己把代号拼进去。
+   2. 所有读写都包在 try 里。iOS 的无痕模式下访问存储会直接报错，
+      不包起来的话整个游戏会白屏。存不上没关系，游戏照样能玩。
+   ============================================================ */
+const 存档名 = (学生) => 'mengya_zice_' + 学生;
+
+/* ------------------------------------------------------------
+   匿名编号 —— 用来算「回访率」，但不涉及任何个人信息
+   ------------------------------------------------------------
+   随机生成 6 位字符（比如 k3f9a1），只存在家长自己的手机里。
+   你在表格里看到的是「k3f9a1 玩了 2 次」，
+   你不知道他是谁、住哪、叫什么 —— 你只知道有个人回来了第二次。
+
+   回访率是这个工具唯一诚实的指标：
+   玩一次是好奇，玩两次才说明真的有用。
+   ------------------------------------------------------------ */
+const 匿名号 = (() => {
+  try {
+    let id = localStorage.getItem('mengya_zice_id');
+    if (!id) {
+      id = Math.random().toString(36).slice(2, 8);
+      localStorage.setItem('mengya_zice_id', id);
+    }
+    return id;
+  } catch (e) {
+    return 'anon';       // 无痕模式存不了，那就每次都算新人
+  }
+})();
+
+/* 先探一下这台设备到底让不让存。
+   ⚠️ 直接双击打开文件（网址是 file://）时，浏览器认为这个页面"来路不明"，
+   会拒绝给它存储空间 —— 这不是代码坏了，上线成网址之后就正常。
+   iOS 的无痕模式也会这样。探出来存不了就在首页说一声，免得你以为游戏出问题了。 */
+const 存储可用 = (() => {
+  try {
+    localStorage.setItem('__试写__', '1');
+    localStorage.removeItem('__试写__');
+    return true;
+  } catch (e) {
+    return false;
+  }
+})();
+
+function 读存档(学生) {
+  try {
+    const 原文 = localStorage.getItem(存档名(学生));
+    return 原文 ? JSON.parse(原文) : { 学生, 记录: [] };
+  } catch (e) {
+    return { 学生, 记录: [] };
+  }
+}
+
+function 写存档(学生, 一局) {
+  try {
+    const 存档 = 读存档(学生);
+    存档.记录.push(一局);
+    // 只留最近 100 局，免得存储越撑越大
+    if (存档.记录.length > 100) 存档.记录 = 存档.记录.slice(-100);
+    localStorage.setItem(存档名(学生), JSON.stringify(存档));
+  } catch (e) {
+    /* 存不上就算了，不影响玩 —— 数据主要走表格 */
+  }
+}
+
+/* 把某一局标记成「已经寄出去了」，下次就不再补寄。
+   用「时间」当身份证：它精确到毫秒，同一个孩子不可能有两局时间一样。 */
+function 标记已寄(学生, 时间) {
+  try {
+    const 存档 = 读存档(学生);
+    const 那条 = 存档.记录.find(r => r.时间 === 时间);
+    if (那条) {
+      那条.已寄 = true;
+      localStorage.setItem(存档名(学生), JSON.stringify(存档));
+    }
+  } catch (e) { /* 存不上无所谓，最多下次多寄一条重复的 */ }
+}
+
+
+/* ============================================================
+   把一局的成绩寄到 Google 表格
+   ------------------------------------------------------------
+   ⚠️ 这里有个绕不开的限制，得讲清楚：
+   Google 表单不允许网页读取它的回应，所以我们只能「闷头寄信」
+   （技术上叫 no-cors）——信寄出去了，但**收不到回执**，
+   代码没法知道表格到底收没收到。
+
+   所以策略是：
+   1. 先存本地（保证不丢），再寄
+   2. 寄的动作没报错 = 大概率成功 → 标记「已寄」
+   3. 报错了（没网、飞行模式）= 肯定没成功 → 留着，下次打开游戏自动补寄
+   4. 万一出现「其实寄到了但被判成失败」，下次会重复寄一条 ——
+      表格里会多一条一样的记录。宁可重复也不能丢，重复你一眼看得出来。
+   ============================================================ */
+function 寄一条(一局) {
+  if (!上报配置.开关) return Promise.resolve(false);
+
+  const 包裹 = new FormData();
+  for (const 键 in 上报配置.字段) {
+    let 值 = 一局[键];
+    if (Array.isArray(值)) 值 = 值.join(' ');      // 错字是数组，拼成「藏 察」
+    包裹.append(上报配置.字段[键], 值 == null ? '' : String(值));
+  }
+
+  return fetch(上报配置.地址, { method: 'POST', mode: 'no-cors', body: 包裹 })
+    .then(() => true)
+    .catch(() => false);
+}
+
+/* 开局前先看看有没有以前没寄出去的，有就补上。
+   一次最多补 20 条，免得孩子攒了一堆时一下子发几十个请求。 */
+function 补寄漏掉的(学生) {
+  if (!上报配置.开关) return;
+  try {
+    const 漏掉的 = 读存档(学生).记录.filter(r => !r.已寄).slice(0, 20);
+    漏掉的.forEach(一局 => {
+      寄一条(一局).then(成功 => { if (成功) 标记已寄(学生, 一局.时间); });
+    });
+  } catch (e) { /* 补寄失败不影响玩 */ }
+}
+
+
+/* ============================================================
+   音效
+   ------------------------------------------------------------
+   用浏览器自带的声音合成器现场发声，不需要任何音频文件，
+   所以这个 HTML 还是能单独发出去、不依赖外部资源。
+   ============================================================ */
+let 音频上下文 = null;
+function 响(频率, 时长 = 0.12, 音量 = 0.08) {
+  try {
+    if (!音频上下文) 音频上下文 = new (window.AudioContext || window.webkitAudioContext)();
+    const 振荡器 = 音频上下文.createOscillator();
+    const 音量器 = 音频上下文.createGain();
+    振荡器.type = 'sine';
+    振荡器.frequency.value = 频率;
+    音量器.gain.setValueAtTime(音量, 音频上下文.currentTime);
+    音量器.gain.exponentialRampToValueAtTime(0.0001, 音频上下文.currentTime + 时长);
+    振荡器.connect(音量器).connect(音频上下文.destination);
+    振荡器.start();
+    振荡器.stop(音频上下文.currentTime + 时长);
+  } catch (e) { /* 有些浏览器不给放声音，静音也能玩 */ }
+}
+const 对了音 = () => { 响(660); setTimeout(() => 响(880), 90); };
+const 错了音 = () => 响(180, 0.18, 0.06);
+const 通关音 = () => { [523, 659, 784, 1047].forEach((f, i) => setTimeout(() => 响(f, 0.16), i * 110)); };
+
+
+/* ============================================================
+   一局游戏的状态
+   ============================================================ */
+let 局 = null;
+
+/* ------------------------------------------------------------
+   抽这一关要考的 12 个字
+   ------------------------------------------------------------
+   ⚠️ 和作业版最大的不同：**同音字不能同时出现在一关里**。
+
+   为什么：一关里如果同时出现「话」和「画」（都念 huà），
+   孩子其实不认识「画」，但配到最后只剩一张 huà，他一点就对了 ——
+   靠排除法蒙对，测出来的成绩偏乐观。
+   三档一共 10 组同音字（五/午、木/目、他/她、话/画……），
+   不处理的话每关撞上的概率有 11%-17%，约 6-9 关就会遇到一次。
+
+   做法：先洗牌，再按拼音去重（一个读音只留一个），最后抽 12 个。
+   先洗牌是为了每次留下来的那个字是随机的，不会总是「话」淘汰「画」。
+
+   作业版不需要这么做 —— 练习时同音字一起出现反而能练辨析。
+
+   还有第二条规则：**这一次自测里已经考过的字，后面几关不再出现**。
+   否则第 2 关可能又抽到第 1 关考过的字，4 关下来测不满 48 个不同的字，
+   家长看到的"认对 32/48"就掺了水。
+   ------------------------------------------------------------ */
+function 抽一关的字(生字, 数量) {
+  // ① 先排掉这一次已经考过的字
+  const 考过 = 本次 ? Object.keys(本次.首答) : [];
+  let 池 = 生字.filter(项 => 考过.indexOf(项.字) === -1);
+  if (池.length < 数量) 池 = 生字.slice();      // 整档字用完了，才允许重复
+
+  // ② 同音去重：一个读音只留一个（先洗牌，保证留下的那个是随机的）
+  const 按音 = {};
+  洗牌(池).forEach(项 => {
+    if (!按音[项.拼音]) 按音[项.拼音] = 项;
+  });
+  let 选中 = 洗牌(Object.values(按音));
+
+  /* ③ 兜底：去重后可能不足 12 个（比如档1 玩到第 4 关，剩下的字里正好有同音对）。
+     这时宁可让同音字同时出现，也不能让这一关少于 12 个字 ——
+     少了会让 4 关的总数对不上，家长一眼就看出不对。 */
+  if (选中.length < 数量) {
+    const 已选 = new Set(选中.map(x => x.字));
+    选中 = 选中.concat(洗牌(池).filter(项 => !已选.has(项.字)));
+  }
+  return 选中.slice(0, 数量);
+}
+
+/* 造一局。模式是 'pinyin'（汉字配拼音）或 'word'（两字组词） */
+function 开一局(模式) {
+  // 把题目做成统一的格式：{ 上: 显示在上面的内容, 下: 显示在下面的内容, 记错用的字 }
+  let 全部题目;
+
+  if (模式 === 'pinyin') {
+    /* 每关随机抽 12 个字，每次不重样。 */
+    let 源 = 字库.生字;
+    if (字库.每次随机抽 && 字库.每次随机抽 < 源.length) {
+      源 = 抽一关的字(源, 字库.每次随机抽);
+    }
+    全部题目 = 源.map(项 => ({
+      上: { 类型: 'zi', 文: 项.字 },
+      下: { 类型: 'py', 文: 项.拼音 },
+      字: 项.字,
+      拼音: 项.拼音,
+    }));
+  } else {
+    const 本课生字 = 字库.生字.map(项 => 项.字);
+    // 组词也一样：合集里有上百组，每次随机挑一部分玩
+    let 组源 = 字库.组词;
+    if (字库.每次随机抽 && 字库.每次随机抽 < 组源.length) {
+      组源 = 洗牌(组源).slice(0, 字库.每次随机抽);
+    }
+    全部题目 = 组源.map(([前, 后, 指定]) => {
+      /* 记错时要记「本课生字」那一个，不是整个词。
+         因为组词是拿本课生字去配一个更简单的旧字（书-包、水-果），
+         孩子配错时该回炉的是生字「包」「果」，不是「书包」「水果」。
+         这样结算页也能查到它的拼音。
+
+         规则：默认取前面那个本课生字；前面不是就取后面的。
+         但有些词两个字都是本课生字（身体、海洋），默认会记成「身」「海」，
+         而「体」「洋」就永远统计不到。这时在这一组后面**再写一个字**
+         指定要记哪个，比如 ["身","体","体"] —— 意思是这组算在「体」头上。 */
+      const 重点 = 指定 ? 指定
+                 : 本课生字.includes(前) ? 前
+                 : 本课生字.includes(后) ? 后
+                 : 前 + 后;
+      return {
+        上: { 类型: 'zi', 文: 前 },
+        下: { 类型: 'zi', 文: 后 },
+        字: 重点,
+        拼音: '',
+      };
+    });
+  }
+
+  局 = {
+    模式,
+    轮组: 分轮(洗牌(全部题目), 每轮对数),
+    当前轮: 0,
+    对: 0,
+    错: 0,
+    错字: {},                    // { "藏": 2 } —— 记哪个字错了几次
+    开始时间: Date.now(),
+    选中: null,
+  };
+
+  切页('page-play');
+  画一轮();
+}
+
+function 画一轮() {
+  const 题目 = 局.轮组[局.当前轮];
+  局.选中 = null;
+  局.本轮剩余 = 题目.length;
+
+  /* 这一轮所有「正确的上下搭配」，按文字记下来。
+     判对错时查这个表，而不是看点的是哪两张牌 —— 原因见 判定() 里的说明。
+     中间那个分隔符是个普通用不到的字符，防止「果+皮」和「果皮+空」被算成同一种搭配。 */
+  局.有效配对 = new Set(题目.map(t => t.上.文 + 分隔符 + t.下.文));
+
+  $('hud-round').textContent = `第 ${局.当前轮 + 1} / ${局.轮组.length} 轮`;
+  更新计分();
+  提示(局.模式 === 'pinyin' ? '上面挑一个字，下面挑它的拼音' : '上下各挑一个字，连成一个词');
+
+  const 上区 = $('zone-top');
+  const 下区 = $('zone-bottom');
+  上区.innerHTML = '';
+  下区.innerHTML = '';
+
+  /* 上下两区分别打乱，否则同一行就是答案，孩子不用认字也能连对 */
+  洗牌(题目).forEach(t => 上区.appendChild(做牌(t, '上')));
+  洗牌(题目).forEach(t => 下区.appendChild(做牌(t, '下')));
+}
+
+/* 做一张字牌 */
+function 做牌(题, 位置) {
+  const 内容 = 题[位置];
+  const 牌 = document.createElement('button');
+  牌.className = 'tile';
+  牌.dataset.位置 = 位置;
+
+  const 文 = document.createElement('span');
+  文.className = 内容.类型 === 'zi' ? 'zi' : 'py';
+  文.textContent = 内容.文;
+  牌.appendChild(文);
+
+  牌._题 = 题;                                    // 题目挂在元素上，记错字时要用
+  牌._文 = 内容.文;                                // 这张牌上写的字（判对错看这个）
+  牌.addEventListener('click', () => 点牌(牌));
+  return 牌;
+}
+
+function 点牌(牌) {
+  if (牌.classList.contains('done')) return;      // 已经配对好的不理
+
+  // 还没选过东西 → 这是第一下
+  if (!局.选中) {
+    选中(牌);
+    return;
+  }
+
+  // 点的是同一张 → 取消选中
+  if (局.选中 === 牌) {
+    牌.classList.remove('picked');
+    局.选中 = null;
+    return;
+  }
+
+  // 点的是同一区的另一张 → 换成选它
+  if (局.选中.dataset.位置 === 牌.dataset.位置) {
+    局.选中.classList.remove('picked');
+    选中(牌);
+    return;
+  }
+
+  // 一上一下，可以判对错了
+  判定(局.选中, 牌);
+}
+
+function 选中(牌) {
+  牌.classList.add('picked');
+  局.选中 = 牌;
+  响(520, 0.06, 0.05);
+}
+
+function 判定(甲, 乙) {
+  /* 先分清哪张在上、哪张在下（孩子可能先点下面再点上面） */
+  const 上牌 = 甲.dataset.位置 === '上' ? 甲 : 乙;
+  const 下牌 = 上牌 === 甲 ? 乙 : 甲;
+
+  /* ⚠️ 按「牌上写的字」判对错，不按「点的是哪两张牌」。
+     为什么：两组词可能共用一个字（观-看 / 察-看 → 下面会有两张「看」），
+     同音字在拼音模式下也一样（两张一模一样的拼音牌）。
+     如果按牌的身份比对，孩子点了另一张「看」会被判错——明明答案是对的。 */
+  const 对上了 = 局.有效配对.has(上牌._文 + 分隔符 + 下牌._文);
+
+  /* ⭐ 自测的核心：成绩只认**第一次**
+     ------------------------------------------------------------
+     孩子可以反复试到全对 —— 体验不打断，也不让他有挫败感。
+     但记进成绩的永远是他**第一次**碰这个字时的结果。
+
+     为什么必须这样：配对游戏玩到最后总能全对，
+     如果按最终结果算，每个孩子都是 100%，
+     家长拿到的数字就完全没有意义了。 */
+  const 这个字 = 上牌._题.字;
+  if (本次 && !(这个字 in 本次.首答)) {
+    本次.首答[这个字] = 对上了 ? '对' : '错';
+  }
+
+  甲.classList.remove('picked');
+  局.选中 = null;
+
+  if (对上了) {
+    局.对++;
+    对了音();
+    提示(挑一句(['对啦！', '很好！', '就是它！', '厉害 👍']), 'hit');
+    [甲, 乙].forEach(牌 => {
+      牌.classList.add('done');
+      // 先变绿让孩子看清对上了，再淡出。位置留着，其它牌不会乱跳
+      setTimeout(() => 牌.classList.add('gone'), 420);
+    });
+
+    局.本轮剩余--;
+    if (局.本轮剩余 === 0) {
+      setTimeout(下一轮, 750);
+    }
+  } else {
+    局.错++;
+    错了音();
+    // 记错字：算在上面那张牌对应的生字上，因为孩子是从字出发去找搭档的
+    const 错的字 = 上牌._题.字;
+    局.错字[错的字] = (局.错字[错的字] || 0) + 1;
+
+    提示(挑一句(['再想想～', '不是这个哦', '换一个试试']), 'miss');
+    [甲, 乙].forEach(牌 => {
+      牌.classList.add('bad');
+      setTimeout(() => 牌.classList.remove('bad'), 320);
+    });
+  }
+  更新计分();
+}
+
+const 挑一句 = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+function 提示(文字, 类 = '') {
+  const p = $('prompt');
+  p.textContent = 文字;
+  p.className = 'prompt ' + 类;
+}
+
+function 更新计分() {
+  $('hud-score').innerHTML = `✅ ${局.对} &nbsp; <span class="wrong">❌ ${局.错}</span>`;
+}
+
+function 下一轮() {
+  局.当前轮++;
+  if (局.当前轮 < 局.轮组.length) {
+    画一轮();
+  } else {
+    结算();
+  }
+}
+
+
+/* ============================================================
+   结算
+   ============================================================ */
+function 结算() {
+  const 用时秒 = Math.round((Date.now() - 局.开始时间) / 1000);
+
+  /* ⚠️ 本关成绩按**首答**算，不按试错累计。
+     局.对 / 局.错 是"一共点错了几次"，孩子磨到最后总能全对；
+     本次.首答 才是"第一次碰这个字时认出来没有"。
+     用 concat 而不是 flat()，老一点的手机浏览器也能跑。 */
+  const 本关的字 = [].concat.apply([], 局.轮组).map(t => t.字);
+  const 本关对   = 本关的字.filter(字 => 本次.首答[字] === '对').length;
+  const 本关错   = 本关的字.length - 本关对;
+  const 正确率   = 本关的字.length ? Math.round(本关对 / 本关的字.length * 100) : 100;
+
+  本次.关数++;
+  本次.用时 += 用时秒;
+
+  /* 寄一条到 Google 表格 —— ⚠️ 全程匿名，复用作业版那个表单
+     · 「学生」栏寄的是 zice-k3f9a1 这样的随机编号，不是任何人的名字
+        （前缀 zice- 是为了让你在表格里一眼把自测数据和学生作业分开）
+     · 你能从这份数据里得到两样东西：回访率、以及哪些字全城孩子都错
+     · 你不知道、也没办法知道他是谁 —— 这是故意的 */
+  const 一局 = {
+    学生:   'zice-' + 匿名号,
+    时间:   new Date().toISOString(),
+    课:     字库.课名,
+    模式:   '自测第' + 本次.关数 + '关',
+    对:     本关对,
+    错:     本关错,
+    正确率: 正确率,
+    错字:   本关的字.filter(字 => 本次.首答[字] === '错'),
+    用时秒: 用时秒,
+  };
+  写存档(匿名号, 一局);
+  寄一条(一局).then(成功 => { if (成功) 标记已寄(匿名号, 一局.时间); });
+
+  通关音();
+
+  // 只说这一关怎么样，不打分、不排名、不和别人比
+  let emoji, 话;
+  if (本关错 === 0)      { emoji = '🏆'; 话 = '这一关全认对了！'; }
+  else if (正确率 >= 80) { emoji = '🌟'; 话 = '很不错！'; }
+  else if (正确率 >= 60) { emoji = '💪'; 话 = '完成啦'; }
+  else                   { emoji = '🌱'; 话 = '这几个字有点难，很正常'; }
+
+  $('done-emoji').textContent = emoji;
+  $('done-line').textContent  = 话;
+  $('stat-right').textContent = 本关对;
+  $('stat-wrong').textContent = 本关错;
+  $('stat-time').textContent  = 用时秒;
+
+  // 这一关第一次没认出来的字，列出来让孩子当场再看一眼
+  画错字列表('review', 'review-list', 本关的字.filter(字 => 本次.首答[字] === '错'));
+
+  /* 还能不能再来一关：
+     · 没满 4 关 → 「再来一关」是主按钮
+     · 满 4 关   → 藏掉它，「看看结果」变成主按钮 */
+  const 还有下一关 = 本次.关数 < 最多几关;
+  $('btn-again').style.display = 还有下一关 ? '' : 'none';
+  $('btn-report').className    = 还有下一关 ? 'btn ghost' : 'btn accent';
+  $('done-foot').textContent   = 还有下一关
+    ? `已经测了 ${本次.关数 * 12} 个字，最多 ${最多几关 * 12} 个`
+    : `${最多几关 * 12} 个字全测完了`;
+
+  切页('page-done');
+}
+
+/* 把一串字画成带拼音的小卡片。结算页和结论页都用它，所以抽出来。 */
+function 画错字列表(块id, 列表id, 字数组) {
+  if (!字数组.length) { $(块id).style.display = 'none'; return; }
+  const 容器 = $(列表id);
+  容器.innerHTML = '';
+  字数组.forEach(字 => {
+    const 条目 = 字库.生字.find(项 => 项.字 === 字);
+    const div = document.createElement('div');
+    div.className = 'zi-item';
+    div.innerHTML = `<div class="z"></div><div class="p"></div>`;
+    div.querySelector('.z').textContent = 字;
+    div.querySelector('.p').textContent = 条目 ? 条目.拼音 : '';
+    容器.appendChild(div);
+  });
+  $(块id).style.display = '';
+}
+
+
+/* ============================================================
+   启动
+   ============================================================ */
+function 进主菜单(档位) {
+  当前学生  = 档位;
+  当前课索引 = 档位.序号;
+  字库      = 全部课程[当前课索引];
+  开新一次自测(档位);              // 换档 = 这一次自测重新开始
+
+  // 上次没寄出去的（比如当时没网），趁现在补上
+  补寄漏掉的(匿名号);
+
+  $('hello-name').textContent = 档位.显示名;
+  $('hello-name').style.color = 档位.颜色;
+  $('menu-lesson').innerHTML  =
+    `一关 12 个字，最多 ${最多几关} 关<br>每打完一关都能看结果，随时可以停`;
+  $('start-title').textContent = '开始第 1 关';
+
+  const 存档 = 读存档(匿名号);
+  $('menu-footnote').textContent =
+    !存储可用          ? '（这台设备不记录次数）'
+    : 存档.记录.length ? `这台手机玩过 ${存档.记录.length} 关`
+    : '';
+
+  切页('page-menu');
+}
+
+/* ============================================================
+   结论页 —— 给家长看的那一页，全案最重要的东西
+   ------------------------------------------------------------
+   写文案时守三条（依据 02-家长沟通SOP/00-话术红线.md）：
+   1. 不说"别的孩子都能做到"「他比同龄人慢」—— 家长会羞耻，然后退出
+   2. 不给形容词，给具体可执行的事
+   3. 判断标准：这句话家长能不能原样转述给爸爸/外婆听？不能就是废话
+   ============================================================ */
+function 看结果() {
+  const 全部字 = Object.keys(本次.首答);
+  const 认对了 = 全部字.filter(字 => 本次.首答[字] === '对');
+  const 没认出 = 全部字.filter(字 => 本次.首答[字] === '错');
+  const 百分比 = 全部字.length ? Math.round(认对了.length / 全部字.length * 100) : 0;
+
+  $('rp-title').textContent = 本次.档名 + ' · 认字小结';
+  $('rp-right').textContent = 认对了.length;
+  $('rp-total').textContent = 全部字.length;
+  $('rp-cap').textContent   = `一共测了 ${全部字.length} 个字，第一次就认出来 ${认对了.length} 个`;
+
+  画错字列表('rp-review', 'rp-review-list', 没认出);
+
+  /* 三档结论。注意都不提"应该"「落后」，只描述现象 + 给一件能做的事 */
+  let 建议;
+  if (百分比 >= 85) {
+    建议 = `这个年龄该认的字，他基本都认得了。<br><br>` +
+           `下一步可以往<b>「读句子」</b>走 —— 认识单个字和读懂一整句话是两回事，` +
+           `很多孩子卡在这一步。`;
+  } else if (百分比 >= 60) {
+    建议 = `认得大半了，剩下的这几个是典型的<b>「听得懂、认不出」</b>。<br><br>` +
+           `在家指着实物问他「这个字念什么」，比让他抄十遍有用得多。`;
+  } else {
+    建议 = `他的中文目前主要在<b>听和说</b>上，认字还没跟上。<br><br>` +
+           `这在海外长大的孩子里非常普遍，<b>不是学得慢</b> —— ` +
+           `有研究专门测过：家里说中文，并不会自动变成会认字，认字得单独练。`;
+  }
+  // 所有档位都追加这一句：它既是实话，也是"过几天再来"的理由
+  建议 += `<br><br>同一个字大概要碰到 <b>6 次</b>才真的记得住，` +
+          `所以过几天可以再测一次 —— 每次抽到的字都不一样。`;
+  $('rp-tip').innerHTML = 建议;
+
+  /* 分享按钮：玩满 3 关才出现。
+     玩 1 关就分享，家长自己都没觉得有价值，转出去也没说服力。 */
+  $('btn-share').style.display = 本次.关数 >= 分享门槛 ? '' : 'none';
+
+  切页('page-report');
+}
+
+/* 家长点「发给朋友」时复制走的那段话。
+   ⚠️ 必须带链接 —— Wordle 那种不带链接的分享是仗着它有名气，我们学不起。
+   语气是家长第一人称 + 一点自嘲，不是机构口吻，转的人才没有心理负担。 */
+function 分享文案() {
+  const 全部字 = Object.keys(本次.首答);
+  const 认对了 = 全部字.filter(字 => 本次.首答[字] === '对').length;
+  const 没认出 = 全部字.filter(字 => 本次.首答[字] === '错');
+  const 链接   = location.origin + location.pathname;
+
+  let 话 = `【${本次.档名}该会的字 · 小测试】\n`;
+  话 += `我家娃 ${全部字.length} 个字，第一次认对 ${认对了} 个${认对了 < 全部字.length * 0.7 ? ' 😅' : ' 🙂'}\n`;
+  if (没认出.length) {
+    话 += `「${没认出.slice(0, 2).join('」「')}」这种看得懂写不出的最要命\n`;
+  }
+  话 += `\n海外娃学中文最怕「学完就忘」，\n`;
+  话 += `这个几分钟测一次，不用注册不用下载：\n${链接}`;
+  return 话;
+}
+
+function 复制到剪贴板(文字) {
+  const 提示一下 = () => {
+    const t = $('copied');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 1800);
+  };
+  const 老办法 = () => {
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = 文字;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      提示一下();
+    } catch (e) {
+      alert(文字);        // 实在复制不了，至少让家长能自己选中
+    }
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(文字).then(提示一下).catch(老办法);
+  } else {
+    老办法();
+  }
+}
+
+function 启动() {
+  // 把微信号填进署名（不写死在 HTML 里，见上面「联系方式」那段注释）
+  $('wx-id').textContent = 微信号;
+
+  /* 首页列出三个年龄档。课名形如「7-9 岁 · 该会的字」，
+     按钮上只显示前半截「7-9 岁」，让家长一眼选。 */
+  const 档位们 = 全部课程.map((课, i) => ({
+    序号: i,
+    显示名: 课.课名.split(' · ')[0],
+    颜色: 取颜色(i),
+  }));
+
+  const 列表 = $('who-list');
+  列表.innerHTML = '';
+  档位们.forEach(档位 => {
+    const b = document.createElement('button');
+    b.className = 'who-btn';
+    const dot = document.createElement('span');
+    dot.className = 'dot';
+    dot.style.background = 档位.颜色;
+    b.appendChild(dot);
+    b.appendChild(document.createTextNode('孩子 ' + 档位.显示名));
+    b.addEventListener('click', () => 进主菜单(档位));
+    列表.appendChild(b);
+  });
+
+  // 网址里写了 ?档=2 就直接进那一档（你自己检查时用，家长看不到这个入口）
+  if (Number.isInteger(档号参数) && 档号参数 >= 1 && 档号参数 <= 全部课程.length) {
+    进主菜单(档位们[当前课索引]);
+  } else {
+    切页('page-who');
+  }
+}
+
+/* ---------- 按钮接线 ---------- */
+document.querySelectorAll('.mode-btn').forEach(b => {
+  b.addEventListener('click', () => {
+    $('start-title').textContent = '开始第 ' + (本次.关数 + 1) + ' 关';
+    开一局(b.dataset.mode);
+  });
+});
+$('btn-quit').addEventListener('click',   () => 切页('page-menu'));
+$('btn-switch').addEventListener('click', () => 切页('page-who'));
+$('btn-again').addEventListener('click',  () => 开一局('pinyin'));
+$('btn-report').addEventListener('click', 看结果);
+$('btn-more').addEventListener('click',   () => 切页('page-who'));
+$('btn-share').addEventListener('click',  () => 复制到剪贴板(分享文案()));
+
+启动();
+</script>
