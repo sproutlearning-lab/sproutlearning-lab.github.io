@@ -1,0 +1,278 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>生字查重 · 萌芽新语</title>
+
+<!-- ==========================================================
+     生字查重工具
+     ==========================================================
+     备新课时用：把想教的字粘进去，立刻知道哪些教过、哪一课教的。
+
+     数据分两部分：
+     1. 历史课程（2025 Term4 ~ 2026 Term2）—— 写死在下面，那些课已经教完了不会变
+     2. 当前课程（种子去旅行…）—— 打开时自动去读 hanzi.html，你加新课它自动跟上
+
+     所以你每教一课，只要照常更新游戏字库就行，这边不用管。
+     ========================================================== -->
+<script>
+/* ============================================================
+   历史课程 —— 2025 Term4 起，已经教完的课
+   ------------------------------------------------------------
+   来源：参考资料/生字总表.md
+   这些课已经过去了，数据不会再变，所以写死在这里。
+   万一发现记错了，直接改这里对应的那一行。
+   ============================================================ */
+const 历史课程 = [
+  // ---------- 2025 Term 4（体例：核心 6 字 + 拓展 9 字）----------
+  { 学期: "2025 T4", 日期: "10/31", 课题: "万圣节",         核心: "光明节平安", 拓展: "" },
+  { 学期: "2025 T4", 日期: "11/07", 课题: "章鱼的三个心脏", 核心: "鱼心色蓝红变", 拓展: "渔鲜忙怕栏拦览工虹" },
+  { 学期: "2025 T4", 日期: "11/14", 课题: "植物也会睡觉",   核心: "开合花叶睡夜", 拓展: "盒拿草菜苹芽闪闻闭" },
+  { 学期: "2025 T4", 日期: "11/21", 课题: "乘风飞翔",       核心: "风空进片云吹", 拓展: "退迎运喝唱告张本辆" },
+  { 学期: "2025 T4", 日期: "11/27", 课题: "我们的太阳系",   核心: "冷热远近高软", 拓展: "硬低冻冰冬煮蒸熟照" },
+  { 学期: "2025 T4", 日期: "12/05", 课题: "小小消防员",     核心: "点灾快间困打", 拓展: "照蒸惊慢悄闻闭扔推" },
+
+  // ---------- 2026 Term 1 ----------
+  { 学期: "2026 T1", 日期: "02/20", 课题: "惠灵顿的火箭风",   核心: "住拦海过挤推发车电", 拓展: "" },
+  { 学期: "2026 T1", 日期: "02/27", 课题: "地球的七大洲",     核心: "亚欧非美南北洋极洲", 拓展: "" },
+  { 学期: "2026 T1", 日期: "03/06", 课题: "好玩儿的中国小吃", 核心: "元宵汤圆园青团甜炮卖", 拓展: "", 存疑: true },
+  { 学期: "2026 T1", 日期: "03/13", 课题: "发烧的小秘密",     核心: "烧原丘体很加信给护", 拓展: "" },
+  { 学期: "2026 T1", 日期: "03/20", 课题: "猫咪的小秘密",     核心: "猫鼻脚眼", 拓展: "有肉看说走" },
+
+  // ---------- 2026 Term 2（每课 9 字）----------
+  { 学期: "2026 T2", 日期: "04/24", 课题: "大脑是如何运作的",     核心: "脑工练指记知识号强", 拓展: "" },
+  { 学期: "2026 T2", 日期: "05/01", 课题: "和平的红花·澳新军团日", 核心: "念忘安守军士平会光", 拓展: "" },
+  { 学期: "2026 T2", 日期: "05/08", 课题: "神奇校车牙齿探险",     核心: "校细恒根伴湿坏顶壮", 拓展: "" },
+  { 学期: "2026 T2", 日期: "05/15", 课题: "人体王国大危机",       核心: "菜臭味材甜食扫放吃", 拓展: "" },
+  { 学期: "2026 T2", 日期: "05/22", 课题: "小侦探寻宝记",         核心: "左右前后旁里外椅桌", 拓展: "" },
+  { 学期: "2026 T2", 日期: "05/29", 课题: "有鳞的爬行动物",       核心: "爬行转卷块壳骨血化", 拓展: "" },
+  { 学期: "2026 T2", 日期: "06/05", 课题: "愚公移山",             核心: "座挡路公爷把移挖动", 拓展: "" },
+  { 学期: "2026 T2", 日期: "06/12", 课题: "大海的超级力量·海啸",   核心: "阳洒沙生板晃轻拍力", 拓展: "" },
+  { 学期: "2026 T2", 日期: "06/19", 课题: "卧薪尝胆",             核心: "卧硬草舌尝苦胆成败", 拓展: "" },
+  { 学期: "2026 T2", 日期: "06/26", 课题: "2000岁的端午节",       核心: "岁午节秋清文玩彩龙亮", 拓展: "" },
+];
+
+/* 启蒙班 4-5 岁的 50 字，是另一条线。
+   核心班的孩子不一定学过，所以单独标出来，只作参考。 */
+const 启蒙字库 = [
+  { 阶: "0 阶", 主题: "数字启蒙（不计入 50）", 字: "一二三四五六七八九十" },
+  { 阶: "一阶", 主题: "空间对比与基础维度",   字: "上下左右前后大小多少开关" },
+  { 阶: "二阶", 主题: "具象自然与环境",       字: "日月水火山石田土天地" },
+  { 阶: "三阶", 主题: "自我与人体",           字: "人口目耳手足心子女我" },
+  { 阶: "四阶", 主题: "故事角色与高频万物",   字: "马牛羊鸟虫风云雨木车" },
+  { 阶: "五阶", 主题: "超级语境枢纽词",       字: "的是有不个来去看" },
+];
+</script>
+
+<style>
+:root {
+  --bg:#FFFDF7; --bg-soft:#F4EFE4; --primary:#2F5D50; --accent:#E8734A;
+  --accent-2:#F2B233; --text:#26221E; --text-2:#5C554D; --border:#DED5C4;
+  --ok:#3E8E5A; --warn:#C4462F;
+  --font-body:"Nunito","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --font-hanzi:"Kaiti SC","STKaiti","KaiTi","PingFang SC",serif;
+}
+* { box-sizing:border-box; }
+html,body { margin:0; padding:0; background:var(--bg); color:var(--text);
+            font-family:var(--font-body); }
+.app { max-width:720px; margin:0 auto; padding:24px 16px 60px; }
+
+h1 { font-size:clamp(22px,6vw,28px); color:var(--primary); margin:0 0 4px; }
+.sub { font-size:14px; color:var(--text-2); margin:0 0 20px; line-height:1.6; }
+
+textarea {
+  width:100%; min-height:96px; padding:14px;
+  border:3px solid var(--border); border-radius:16px;
+  font-family:var(--font-hanzi); font-size:26px; line-height:1.7;
+  background:#fff; color:var(--text); resize:vertical;
+}
+textarea:focus { outline:none; border-color:var(--accent); }
+.hint { font-size:13px; color:var(--text-2); margin:8px 2px 0; }
+
+.stat-row { display:flex; gap:10px; margin:22px 0 0; flex-wrap:wrap; }
+.stat { flex:1; min-width:96px; background:var(--bg-soft); border-radius:14px;
+        padding:12px 10px; text-align:center; }
+.stat .n { font-size:26px; font-weight:800; color:var(--primary); line-height:1.1; }
+.stat .n.new { color:var(--ok); }
+.stat .n.old { color:var(--accent); }
+.stat .l { font-size:12px; color:var(--text-2); margin-top:4px; font-weight:600; }
+
+.block { margin-top:24px; }
+.block h2 { font-size:16px; margin:0 0 10px; display:flex; align-items:center; gap:8px; }
+.block h2 .tag { font-size:12px; font-weight:700; padding:3px 9px; border-radius:999px; color:#fff; }
+.tag.new { background:var(--ok); }
+.tag.old { background:var(--accent); }
+
+.zi-wall { display:flex; flex-wrap:wrap; gap:8px; }
+.zi-chip {
+  font-family:var(--font-hanzi); font-size:30px; line-height:1;
+  background:#fff; border:3px solid var(--border); border-radius:12px;
+  padding:8px 12px;
+}
+.zi-chip.new { border-color:var(--ok); }
+
+.hit { display:flex; align-items:center; gap:14px; padding:11px 12px;
+       border-bottom:1px solid var(--border); }
+.hit:last-child { border-bottom:none; }
+.hit .z { font-family:var(--font-hanzi); font-size:32px; line-height:1; flex-shrink:0;
+          width:44px; text-align:center; }
+.hit .where { font-size:14px; line-height:1.5; }
+.hit .where b { color:var(--accent); }
+.hit .where .meta { color:var(--text-2); font-size:12px; }
+.hit .badge { font-size:11px; padding:2px 7px; border-radius:6px; margin-left:6px;
+              background:var(--bg-soft); color:var(--text-2); font-weight:700; }
+.card { background:#fff; border:3px solid var(--border); border-radius:16px; padding:4px 10px; }
+
+.src { margin-top:28px; font-size:12px; color:var(--text-2); line-height:1.7;
+       background:var(--bg-soft); border-radius:12px; padding:12px 14px; }
+.src b { color:var(--text); }
+.empty { color:var(--text-2); font-size:14px; padding:8px 2px; }
+</style>
+
+<div class="app">
+  <h1>生字查重</h1>
+  <p class="sub">备新课时用：把想教的字粘进来，立刻知道哪些教过、是哪一课教的。<br>
+     输入多少个都行，标点、拼音、空格会自动忽略。</p>
+
+  <textarea id="in" placeholder="图 画 写 标 名 比 最 条 页" autofocus></textarea>
+  <p class="hint" id="hint">　</p>
+
+  <div class="stat-row">
+    <div class="stat"><div class="n"     id="s-all">0</div><div class="l">输入的字</div></div>
+    <div class="stat"><div class="n new" id="s-new">0</div><div class="l">全新</div></div>
+    <div class="stat"><div class="n old" id="s-old">0</div><div class="l">教过</div></div>
+  </div>
+
+  <div class="block" id="b-new" style="display:none">
+    <h2><span class="tag new">全新</span> 这些字没教过</h2>
+    <div class="zi-wall" id="w-new"></div>
+  </div>
+
+  <div class="block" id="b-old" style="display:none">
+    <h2><span class="tag old">教过</span> 这些字出现过</h2>
+    <div class="card" id="w-old"></div>
+  </div>
+
+  <div class="src" id="src">正在读取字库…</div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+
+/* 只留汉字，其它字符（空格、逗号、拼音、换行）全部忽略。
+   一-鿿 是常用汉字的编码范围。 */
+const 取汉字 = s => (s.match(/[一-鿿]/g) || []);
+
+/* ------------------------------------------------------------
+   建一张「字 → 在哪些课出现过」的索引表
+   ------------------------------------------------------------ */
+const 索引 = new Map();
+function 收录(字符串, 出处) {
+  取汉字(字符串).forEach(z => {
+    if (!索引.has(z)) 索引.set(z, []);
+    索引.get(z).push(出处);
+  });
+}
+
+历史课程.forEach(k => {
+  收录(k.核心, { 组: "核心班", 课: k.课题, 说明: k.学期 + " · " + k.日期, 类型: "核心字", 存疑: k.存疑 });
+  收录(k.拓展, { 组: "核心班", 课: k.课题, 说明: k.学期 + " · " + k.日期, 类型: "拓展字", 存疑: k.存疑 });
+});
+启蒙字库.forEach(k => {
+  收录(k.字, { 组: "启蒙班", 课: k.主题, 说明: k.阶, 类型: "启蒙 50 字" });
+});
+
+/* ------------------------------------------------------------
+   自动读游戏字库（hanzi.html），把当前正在教的课也收进来
+   ------------------------------------------------------------
+   为什么要 fetch 而不是写死：你每周会往游戏里加新课，
+   这样查重工具就自动跟上了，不用两头维护。
+   复习合集跳过——它装的是历史字，上面已经收录过，而且没有课次信息。
+   ------------------------------------------------------------ */
+let 游戏课数 = 0;
+async function 读游戏字库() {
+  const 文本 = await fetch('hanzi.html?t=' + Date.now()).then(r => {
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r.text();
+  });
+  const m = 文本.match(/const 全部课程 = (\[[\s\S]*?\n\]);/);
+  if (!m) throw new Error('在 hanzi.html 里没找到字库');
+  // 这是自己仓库里的文件，内容可控
+  const 课程 = new Function('return ' + m[1])();
+  课程.filter(k => !k.复习合集).forEach(k => {
+    游戏课数++;
+    收录(k.生字.map(x => x.字).join(''), { 组: "核心班", 课: k.课名, 说明: "当前单元", 类型: "生字" });
+  });
+}
+
+function 查() {
+  const 字们 = 取汉字($('in').value);
+  const 去重 = [...new Set(字们)];
+  const 重复输入 = 字们.length - 去重.length;
+
+  $('hint').textContent = 重复输入 > 0
+    ? '（你输入的字里有 ' + 重复输入 + ' 个是重复的，已合并）' : '　';
+
+  const 新 = 去重.filter(z => !索引.has(z));
+  const 旧 = 去重.filter(z => 索引.has(z));
+
+  $('s-all').textContent = 去重.length;
+  $('s-new').textContent = 新.length;
+  $('s-old').textContent = 旧.length;
+
+  $('b-new').style.display = 新.length ? '' : 'none';
+  $('w-new').innerHTML = '';
+  新.forEach(z => {
+    const d = document.createElement('div');
+    d.className = 'zi-chip new'; d.textContent = z;
+    $('w-new').appendChild(d);
+  });
+
+  $('b-old').style.display = 旧.length ? '' : 'none';
+  $('w-old').innerHTML = '';
+  旧.forEach(z => {
+    const 行 = document.createElement('div');
+    行.className = 'hit';
+    const zi = document.createElement('div');
+    zi.className = 'z'; zi.textContent = z;
+    const 右 = document.createElement('div');
+    右.className = 'where';
+    索引.get(z).forEach((出, i) => {
+      const p = document.createElement('div');
+      const b = document.createElement('b');
+      b.textContent = 出.课;
+      p.appendChild(b);
+      const meta = document.createElement('span');
+      meta.className = 'meta';
+      meta.textContent = '　' + 出.说明;
+      p.appendChild(meta);
+      const bg = document.createElement('span');
+      bg.className = 'badge';
+      bg.textContent = (出.组 === '启蒙班' ? '启蒙班 · ' : '') + 出.类型 + (出.存疑 ? ' ⚠️待确认' : '');
+      p.appendChild(bg);
+      右.appendChild(p);
+    });
+    行.appendChild(zi); 行.appendChild(右);
+    $('w-old').appendChild(行);
+  });
+}
+
+$('in').addEventListener('input', 查);
+
+/* 启动：先用历史库能查，游戏字库读到了再补上 */
+(async () => {
+  const 历史字数 = 索引.size;
+  try {
+    await 读游戏字库();
+    $('src').innerHTML =
+      '字库来源：<b>历史课程 ' + 历史课程.length + ' 课</b>（写在本文件里）＋ ' +
+      '<b>游戏字库 ' + 游戏课数 + ' 课</b>（自动读 hanzi.html，你加新课这里自动跟上）＋ ' +
+      '<b>启蒙班 50 字</b>（另一条线，只作参考）。<br>共收录 <b>' + 索引.size + ' 个字</b>。';
+  } catch (e) {
+    $('src').innerHTML =
+      '字库来源：<b>历史课程 ' + 历史课程.length + ' 课</b>＋<b>启蒙班 50 字</b>，共 <b>' + 历史字数 + ' 个字</b>。<br>' +
+      '⚠️ <b>没能自动读到游戏字库</b>（' + e.message + '），所以《种子去旅行》这些当前课程<b>不在查重范围里</b>。<br>' +
+      '如果你是双击本地文件打开的，这是正常的 —— 用线上网址打开就能读到。';
+  }
+  查();
+})();
+</script>
