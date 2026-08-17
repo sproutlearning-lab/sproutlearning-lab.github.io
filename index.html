@@ -171,10 +171,14 @@ const 颜色表 = ['#E8734A', '#2F5D50', '#F2B233', '#3E8E5A', '#7B5EA7', '#C446
 
 /* 跳进某个游戏。
    关键：把网址后面的参数**原样带过去**，游戏才知道是谁在玩、玩第几课。
-   选过人之后只传选中的那一个，游戏里就不用再选一次。 */
+
+   ⚠️ kids 要保留**全家名单**，另外用 who 说明当前是谁。
+   以前这里把 kids 直接覆盖成选中的那一个，结果游戏以为这家只有一个孩子，
+   「换个人玩」按钮就不出现了，另一个孩子只能重开链接。 */
 function 进游戏(文件, 学生代号) {
   const 带过去 = new URLSearchParams(location.search);
-  带过去.set('kids', 学生代号);
+  带过去.set('kids', 名单.join(','));   // 全家名单，原样保留
+  带过去.set('who', 学生代号);          // 当前选中的是谁
   location.href = 文件 + '?' + 带过去.toString();
 }
 
@@ -184,7 +188,8 @@ function 进游戏(文件, 学生代号) {
 function 也许直接跳(学生代号) {
   if (全部游戏.length === 1) {
     const 带过去 = new URLSearchParams(location.search);
-    带过去.set('kids', 学生代号);
+    带过去.set('kids', 名单.join(','));   // 同上：全家名单要保留
+    带过去.set('who', 学生代号);
     location.replace(全部游戏[0].文件 + '?' + 带过去.toString());
     return true;
   }

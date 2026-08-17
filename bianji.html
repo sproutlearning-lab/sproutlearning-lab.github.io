@@ -36,6 +36,7 @@ h1{font-size:clamp(22px,6vw,28px);color:var(--primary);margin:0 0 4px;}
 input[type=text],textarea{width:100%;padding:12px 14px;border:3px solid var(--border);
 border-radius:14px;background:#fff;color:var(--text);font-family:var(--font-body);font-size:16px;}
 textarea{font-family:var(--font-hanzi);font-size:25px;line-height:1.7;min-height:84px;resize:vertical;}
+textarea::placeholder,input::placeholder{font-family:var(--font-body);font-size:14px;color:#B9B0A4;}
 input:focus,textarea:focus{outline:none;border-color:var(--accent);}
 
 .rows{margin-top:8px;}
@@ -82,12 +83,12 @@ color:var(--text-2);line-height:1.75;margin-top:14px;}
 
   <div class="field">
     <label>课名（显示在游戏首页）</label>
-    <input type="text" id="kename" placeholder="种子去旅行 · 第 3 课">
+    <input type="text" id="kename" placeholder="例：种子去旅行 · 第 3 课">
   </div>
 
   <div class="field">
     <label>这节课的字（粘一串就行，标点空格自动忽略）</label>
-    <textarea id="zi" placeholder="图贴写标名比最条页" autofocus></textarea>
+    <textarea id="zi" placeholder="例：图贴写标名比最条页　（这行是提示，直接在这里打字或粘贴）" autofocus></textarea>
   </div>
 
   <div class="rows" id="rows"><p class="empty">上面输入汉字后，这里会出现每个字的拼音和组词选项。</p></div>

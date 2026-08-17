@@ -1252,22 +1252,33 @@ function 启动() {
     颜色: 取颜色(i),
   }));
 
+  /* ⚠️ 选人列表要先建好，不管这次去不去选人页 ——
+     因为主菜单上的「换个人玩」随时可能把用户送回这一页，
+     那时候列表必须已经在了，否则点开是一片空白。 */
+  const 列表 = $('who-list');
+  列表.innerHTML = '';
+  学生们.forEach(学生 => {
+    const b = document.createElement('button');
+    b.className = 'who-btn';
+    const dot = document.createElement('span');
+    dot.className = 'dot';
+    dot.style.background = 学生.颜色;
+    b.appendChild(dot);
+    b.appendChild(document.createTextNode('我是 ' + 学生.显示名));
+    b.addEventListener('click', () => 进主菜单(学生));
+    列表.appendChild(b);
+  });
+
+  /* 从入口页进来时，网址里会带 who=选中的孩子。
+     这时直接进他的主菜单，不用再选一次人；
+     但 kids 里的全家名单还在，所以「换个人玩」按钮照样有。 */
+  const 指定的 = 参数.get('who');
+  const 他 = 指定的 && 学生们.find(x => x.代号 === 指定的);
+  if (他) { 进主菜单(他); return; }
+
   if (学生们.length === 1) {
-    进主菜单(学生们[0]);                          // 只有一个孩子，跳过选人
+    进主菜单(学生们[0]);          // 只有一个孩子，跳过选人
   } else {
-    const 列表 = $('who-list');
-    列表.innerHTML = '';
-    学生们.forEach(学生 => {
-      const b = document.createElement('button');
-      b.className = 'who-btn';
-      const dot = document.createElement('span');
-      dot.className = 'dot';
-      dot.style.background = 学生.颜色;
-      b.appendChild(dot);
-      b.appendChild(document.createTextNode('我是 ' + 学生.显示名));
-      b.addEventListener('click', () => 进主菜单(学生));
-      列表.appendChild(b);
-    });
     切页('page-who');
   }
 }
