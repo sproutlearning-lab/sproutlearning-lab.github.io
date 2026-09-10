@@ -146,6 +146,23 @@ const 全部课程 = [
     ],
   },
 
+  /* ========== 人口大发现 第 1 课 ========== */
+  {
+    课名: "人口大发现 · 第 1 课",
+
+    生字: [
+      { 字: "国", 拼音: "guó",  词: "国家",   配: ["国","家"] },
+      { 字: "全", 拼音: "quán", 词: "完全",   配: ["完","全"] },
+      { 字: "万", 拼音: "wàn",  词: "万岁",   配: ["万","岁"] },
+      { 字: "亿", 拼音: "yì",   词: "一亿",   配: ["一","亿"] },
+      { 字: "地", 拼音: "dì",   词: "地方",   配: ["地","方"] },
+      { 字: "方", 拼音: "fāng", 词: "方向",   配: ["方","向"] },
+      { 字: "比", 拼音: "bǐ",   词: "比一比" },
+      { 字: "更", 拼音: "gèng", 词: "更多",   配: ["更","多"] },
+      { 字: "挤", 拼音: "jǐ",   词: "很挤",   配: ["很","挤"] },
+    ],
+  },
+
   /* ========== 复习合集 · 一二学期（上）89 字 ==========
      跟普通课的三点不同：
      1. 复习合集: true —— 不带课号的链接不会打开它，永远打开最新正课
@@ -540,6 +557,8 @@ html, body {
 }
 .hud .round { color: var(--primary); }
 .hud .score .wrong { color: var(--warn); }
+.hud .score .rate  { color: var(--primary); }
+.hud .score .rate.low { color: var(--warn); }
 
 .prompt {
   text-align: center; font-size: 15px; color: var(--text-2);
@@ -600,6 +619,15 @@ html, body {
    ============================================================ */
 .result-emoji { font-size: 64px; text-align: center; line-height: 1; margin-top: 12px; }
 .result-line  { text-align: center; font-size: clamp(20px, 6vw, 26px); font-weight: 800; margin-top: 14px; }
+
+/* 正确率做成结算页最大的那个数字。
+   为什么要这么显眼：只显示用时的话，孩子会把「快」当成唯一目标，
+   于是乱点也能很快玩完。把正确率摆在最大的位置，两个数就得同时顾着。 */
+.big-rate { text-align: center; font-weight: 800; margin: 12px 0 0;
+            font-size: clamp(30px, 9vw, 40px); line-height: 1.1; }
+.big-rate.good { color: var(--ok); }
+.big-rate.mid  { color: var(--accent-2); }
+.big-rate.low  { color: var(--warn); }
 
 .stat-row { display: flex; gap: 12px; margin-top: 22px; }
 .stat {
@@ -695,6 +723,7 @@ html, body {
     <div class="spacer"></div>
     <div class="result-emoji" id="done-emoji"></div>
     <p class="result-line" id="done-line"></p>
+    <p class="big-rate" id="done-rate"></p>
     <div class="stat-row">
       <div class="stat"><div class="n"     id="stat-right"></div><div class="l">答对</div></div>
       <div class="stat"><div class="n bad" id="stat-wrong"></div><div class="l">答错</div></div>
@@ -1162,7 +1191,15 @@ function 提示(文字, 类 = '') {
 }
 
 function 更新计分() {
-  $('hud-score').innerHTML = `✅ ${局.对} &nbsp; <span class="wrong">❌ ${局.错}</span>`;
+  /* 顶栏实时显示正确率：乱点的话这个数字会当场往下掉，
+     比玩完才告诉他有效得多。 */
+  const 总 = 局.对 + 局.错;
+  // 一题没答就先显示 100% 是虚的，等真答了一题再出百分比
+  const 率段 = 总 === 0 ? '' :
+    ` &nbsp; <span class="rate${Math.round(局.对 / 总 * 100) < 70 ? ' low' : ''}">`
+    + Math.round(局.对 / 总 * 100) + '%</span>';
+  $('hud-score').innerHTML =
+    `✅ ${局.对} &nbsp; <span class="wrong">❌ ${局.错}</span>` + 率段;
 }
 
 function 下一轮() {
@@ -1212,6 +1249,9 @@ function 结算() {
 
   $('done-emoji').textContent = emoji;
   $('done-line').textContent  = 话;
+  $('done-rate').textContent  = '正确率 ' + 正确率 + '%';
+  $('done-rate').className    = 'big-rate ' +
+    (正确率 >= 90 ? 'good' : 正确率 >= 70 ? 'mid' : 'low');
   $('stat-right').textContent = 局.对;
   $('stat-wrong').textContent = 局.错;
   $('stat-time').textContent  = 用时秒;
