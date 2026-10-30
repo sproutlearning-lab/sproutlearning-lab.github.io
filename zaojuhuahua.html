@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>造句画画</title>
+<!--
+  造句画画 —— 孩子用今天的字说一句话，老师填进来，点「生成」复制一段提示词，拿去大模型出图。
+  通用：网址后面加 ?字=用 就预先填好今天练的字（课件里的按钮就是这么链过来的）。
+  风格写在下面「风格」里，每组 4 个；想换风格改那几行就行。
+  改了这个模板：cp 工具/造句画画-模板.html 教具/造句画画.html，再跑 python3 工具/生成工具箱.py
+-->
+<style>
+:root { --绿:#2f6f4f; --纸:#f7f4ee; --字:#222; --灰:#6b665e; --线:#e2dccf; --橙:#e2730f; --浅橙:#fdf0e3; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--纸); color:var(--字); font-family:-apple-system,"PingFang SC","Hiragino Sans GB",sans-serif; }
+main { max-width:1600px; margin:0 auto; padding:24px 24px 40px; }
+.顶 { display:flex; align-items:center; gap:24px; flex-wrap:wrap; margin-bottom:18px; }
+h1 { font-size:36px; margin:0; color:var(--绿); letter-spacing:3px; }
+.今天 { font-size:22px; display:flex; align-items:center; gap:10px; }
+.今天 input { width:120px; font-size:28px; text-align:center; padding:4px 8px; border:2px solid var(--绿); border-radius:10px; color:var(--橙); font-weight:700; }
+.顶 .说明 { color:var(--灰); font-size:15px; margin-left:auto; }
+.格 { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:18px; }
+.组 { background:#fff; border:2px solid var(--线); border-radius:18px; padding:18px 20px; display:flex; flex-direction:column; gap:12px; }
+.组 h2 { margin:0; font-size:20px; color:var(--灰); font-weight:600; display:flex; justify-content:space-between; }
+.组 h2 button { font-size:14px; }
+.行 { display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:24px; }
+.行 input { font-size:24px; padding:6px 10px; border:1.5px solid #bbb; border-radius:10px; min-width:0; }
+.行 .谁, .行 .哪 { width:150px; }
+.行 .后 { flex:1; min-width:220px; }
+.句 { font-size:34px; line-height:1.4; min-height:48px; font-weight:600; }
+.句 .空 { color:#c9c3b6; font-weight:400; }
+.句 b { color:var(--橙); }
+.提醒 { color:#b33; font-size:15px; min-height:20px; }
+.风格 { display:flex; flex-wrap:wrap; gap:8px; }
+.风格 button { font-size:19px; padding:8px 16px; border:2px solid var(--绿); background:#fff; color:var(--绿); border-radius:999px; cursor:pointer; }
+.风格 button.选 { background:var(--绿); color:#fff; }
+.出 { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.生成 { font-size:20px; font-weight:700; padding:10px 24px; border:none; background:var(--橙); color:#fff; border-radius:999px; cursor:pointer; }
+.出 .状态 { font-size:15px; color:var(--绿); }
+textarea.词 { width:100%; font:inherit; font-size:15px; line-height:1.55; padding:8px 10px; border:1px solid var(--线); border-radius:10px; background:var(--浅橙); display:none; resize:vertical; }
+button { font-family:inherit; }
+.小 { font-size:14px; padding:4px 10px; border:1px solid #bbb; background:#fff; border-radius:8px; cursor:pointer; color:var(--灰); }
+footer { margin-top:24px; color:var(--灰); font-size:13px; line-height:1.7; }
+@media (max-width: 900px) { .格 { grid-template-columns:1fr; } .顶 .说明 { margin-left:0; } }
+</style></head><body><main>
+<div class="顶">
+  <h1>造句画画</h1>
+  <label class="今天">今天练的字词 <input id="目标" value="" placeholder="用"></label>
+  <span class="说明">孩子说，老师填 → 选一个风格 → 点「生成」，提示词自动复制，拿去大模型出图</span>
+</div>
+<div class="格" id="格"></div>
+<footer>
+  句子 = 谁 + 在 + 哪里 + 后半句。后半句里要用上今天的字词，没用上会有红字提醒（只是提醒，照样能生成）。<br>
+  提示词末尾自动加了「画面里不要出现任何文字」——AI 画的汉字几乎都是错的。<br>
+  填的内容会留在这台电脑的浏览器里，下次打开还在；点每组右上角「清空」重来。想换风格跟 Claude 说。
+</footer>
+</main>
+<script>
+// 每组 4 个风格：[按钮上的名字, 写进提示词的描述]
+const 风格 = [
+  [['水彩绘本', '儿童水彩绘本风格，颜色柔和温暖'], ['卡通动画', '明亮的卡通动画风格，线条圆润'],
+   ['乐高积木', '所有东西都用乐高积木拼成的样子'], ['蜡笔画', '小朋友的蜡笔画风格，笔触粗粗的']],
+  [['粘土动画', '彩色黏土做的定格动画风格'], ['像素游戏', '复古像素游戏风格'],
+   ['中国水墨', '中国水墨画风格，留白多'], ['剪纸', '中国红色剪纸风格']],
+  [['3D 动画电影', '3D 动画电影风格，角色可爱，光线明亮'], ['漫画', '彩色漫画风格，有分格'],
+   ['油画', '厚涂油画风格，色彩浓郁'], ['彩色铅笔', '彩色铅笔手绘风格，像素描本里的画']],
+  [['毛毡玩偶', '毛毡手工玩偶风格，毛茸茸的'], ['贴纸', '可爱贴纸风格，白色描边'],
+   ['手绘动画', '日本手绘动画风格，天空和草地很细致'], ['折纸', '所有东西都是用彩纸折出来的']],
+];
+const 键 = '造句画画-v1';
+const 读 = () => { try { return JSON.parse(localStorage.getItem(键)) || {}; } catch (e) { return {}; } };
+const 存 = () => { try { localStorage.setItem(键, JSON.stringify(状态)); } catch (e) {} };
+const 状态 = Object.assign({ 目标: '', 组: [{}, {}, {}, {}] }, 读());
+const 转义 = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+// 网址里带 ?字=用 就用它；否则沿用上次填的
+const 参数 = new URLSearchParams(location.search).get('字');
+if (参数) 状态.目标 = 参数;
+const 目标框 = document.getElementById('目标');
+目标框.value = 状态.目标;
+目标框.oninput = () => { 状态.目标 = 目标框.value.trim(); 存(); 全刷(); };
+
+function 句子(g) {
+  const 谁 = (g.谁 || '').trim(), 哪 = (g.哪 || '').trim(), 后 = (g.后 || '').trim().replace(/[。！!.]+$/, '');
+  if (!谁 && !哪 && !后) return '';
+  return `${谁}${哪 ? '在' + 哪 : ''}${后}。`;
+}
+
+const 格 = document.getElementById('格');
+格.innerHTML = 风格.map((套, i) => `
+  <section class="组" data-i="${i}">
+    <h2><span>第 ${i + 1} 组</span><button class="小 清">清空</button></h2>
+    <div class="行">
+      <input class="谁" placeholder="谁"> 在 <input class="哪" placeholder="哪里">
+      <input class="后" placeholder="后半句，比如：用贝壳盖房子">
+    </div>
+    <div class="句"></div>
+    <div class="提醒"></div>
+    <div class="风格">${套.map(([名], k) => `<button data-k="${k}">${名}</button>`).join('')}</div>
+    <div class="出"><button class="生成">生成并复制</button><span class="状态"></span></div>
+    <textarea class="词" rows="4" readonly></textarea>
+  </section>`).join('');
+
+function 刷(块) {
+  const i = +块.dataset.i, g = 状态.组[i];
+  const s = 句子(g), 目 = 状态.目标;
+  const 显示 = s ? 转义(s) : '<span class="空">孩子说的句子会出现在这里</span>';
+  块.querySelector('.句').innerHTML = 目 && s ? 显示.split(转义(目)).join(`<b>${转义(目)}</b>`) : 显示;
+  块.querySelector('.提醒').textContent = s && 目 && !s.includes(目) ? `句子里还没有用上「${目}」` : '';
+  块.querySelectorAll('.风格 button').forEach(b => b.classList.toggle('选', +b.dataset.k === g.风格));
+}
+function 全刷() { 格.querySelectorAll('.组').forEach(刷); }
+
+格.querySelectorAll('.组').forEach(块 => {
+  const i = +块.dataset.i, g = 状态.组[i];
+  ['谁', '哪', '后'].forEach(f => {
+    const 框 = 块.querySelector('.' + f);
+    框.value = g[f] || '';
+    框.oninput = () => { g[f] = 框.value; 存(); 刷(块); };
+  });
+  块.querySelectorAll('.风格 button').forEach(b => b.onclick = () => { g.风格 = +b.dataset.k; 存(); 刷(块); });
+  块.querySelector('.清').onclick = () => {
+    状态.组[i] = {}; 存();
+    块.querySelectorAll('input').forEach(x => x.value = '');
+    块.querySelector('.词').style.display = 'none'; 块.querySelector('.状态').textContent = '';
+    location.reload();
+  };
+  块.querySelector('.生成').onclick = async () => {
+    const s = 句子(g), 态 = 块.querySelector('.状态'), 框 = 块.querySelector('.词');
+    if (!s) return 态.textContent = '还没有句子';
+    if (g.风格 === undefined) return 态.textContent = '先选一个风格';
+    const [, 描述] = 风格[i][g.风格];
+    const 词 = `请画一张图：${s}\n风格：${描述}。\n画面适合 7–9 岁的孩子看，明亮、友好、有趣，主角清楚地在画面中间。画面里不要出现任何文字、字母或数字。`;
+    框.value = 词; 框.style.display = 'block';
+    try { await navigator.clipboard.writeText(词); 态.textContent = '已复制，去大模型里粘贴（Cmd+V）'; }
+    catch (e) { 框.select(); 态.textContent = '浏览器不让自动复制：下面的字已经选中，按 Cmd+C'; }
+  };
+  刷(块);
+});
+</script></body></html>
